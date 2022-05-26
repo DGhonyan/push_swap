@@ -42,5 +42,3 @@ static int	is_a_number(char **arg)
 	}
 	return (1);
 }
-
-static 
