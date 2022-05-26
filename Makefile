@@ -1,4 +1,4 @@
-NAME = so_long
+NAME = push_swap
 CC = cc
 CFLAGS = -c
 LIBFT = -lft -L libft
