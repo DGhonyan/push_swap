@@ -27,8 +27,7 @@ char	*sewing_machine(char **argv);
 
 void	free_list(t_list *lst);
 
-t_list	*s_alloc(char *s);
-t_list	*argv_alloc(char **argv);
+t_list	*allocate_list(char *s);
 
 t_list	*lstnew(int num, int index, t_list *prev);  
 

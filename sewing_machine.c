@@ -30,7 +30,7 @@ char	*sewing_machine(char **argv)
 			return (NULL);
 		i++;
 	}
-	ft_printf(MAGENTA "%s\n" RESET, s);
+	//ft_printf(MAGENTA "%s\n" RESET, s);
 	return (s);
 }
 static char	*sewing_utils(char *s, char *s2)
