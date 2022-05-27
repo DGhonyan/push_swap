@@ -2,5 +2,10 @@
 
 int	main(int argc, char **argv)
 {
-	check_args(argc, argv);
+	char	*s;
+
+	s = NULL;
+	if (argc == 1)
+		s = get_next_line_new(STDIN_FILENO);
+	check_args(argc, argv, s);
 }

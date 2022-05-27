@@ -7,7 +7,7 @@ typedef struct s_list {
 	int				index;
 	struct s_list	*next;
 	struct s_list	*prev;
-} t_list;
+}	t_list;
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -16,6 +16,6 @@ typedef struct s_list {
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
-void	check_args(int argc, char **argv);
+void	check_args(int argc, char **argv, char *s);
 
 #endif
