@@ -44,7 +44,7 @@ static t_list	*alloc(char *s)
 	i = 1;
 	while (nums[i])
 	{
-		list->next = lstnew(ft_atoi(nums[i]), 0, list);
+		list->next = lstnew(ft_atoi(nums[i]), -1, list);
 		if (!list->next)
 			err_lst("malloc failed at s_alloc", nums, s, list);
 		list = list->next;

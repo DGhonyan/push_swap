@@ -4,6 +4,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 # include "colors.h"
 # include "libft/libft.h"
@@ -26,6 +27,10 @@ void	err_lst(char *msg, char **arr, char *s, t_list *lst);
 char	*sewing_machine(char **argv);
 
 void	free_list(t_list *lst);
+int		lstsize(t_list *lst);
+
+
+void	_index(t_list *lst);
 
 t_list	*allocate_list(char *s);
 

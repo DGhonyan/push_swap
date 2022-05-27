@@ -8,7 +8,7 @@ int	main(int argc, char **argv)
 	s = NULL;
 	if (argc == 1)
 		s = get_next_line_new(STDIN_FILENO);
-	if (argc != 1)
+	else
 		s = sewing_machine(argv);
 	if (!s)
 	{
@@ -17,9 +17,15 @@ int	main(int argc, char **argv)
 	}
 	check_args(argc, argv, s);
 	list = allocate_list(s);
-	while (list)
-	{
-		ft_printf(YELLOW "%d\n" RESET, list->num);
-		list = list->next;
-	}
+	// while (list->next)
+	// {
+	// 	ft_printf(YELLOW "%d\n" RESET, list->num);
+	// 	list = list->next;
+	// }
+	// while (list)
+	// {
+	// 	ft_printf(YELLOW "%d\n" RESET, list->num);
+	// 	list = list->prev;
+	// }
+	_index(list);
 }
