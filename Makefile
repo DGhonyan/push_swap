@@ -3,6 +3,7 @@ CC = cc
 CFLAGS = -c
 LIBFT = -lft -L libft
 FT_PRINTF = -lftprintf -L ft_printf
+PRINTF_LIB = ft_printf/libftprintf.a
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 
@@ -24,7 +25,7 @@ clean:
 	rm -f ./*.o libft/*.o ft_printf/*.o
 
 fclean: clean
-	rm -f $(NAME) libft/libft.a ft_printf/libftprintf.a
+	rm -f $(NAME) libft/libft.a 
 
 re: fclean all
 

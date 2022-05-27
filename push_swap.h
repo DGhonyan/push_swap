@@ -2,13 +2,6 @@
 
 # define PUSH_SWAP_H
 
-typedef struct s_list {
-	int				num;
-	int				index;
-	struct s_list	*next;
-	struct s_list	*prev;
-}	t_list;
-
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -16,6 +9,24 @@ typedef struct s_list {
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
+typedef struct s_list {
+	int				num;
+	int				index;
+	struct s_list	*next;
+	struct s_list	*prev;
+}	t_list;
+
 void	check_args(int argc, char **argv, char *s);
+
+//Errors
+void	err(char *msg, char **arr, char *s);
+void	err_lst(char *msg, char **arr, char *s, t_list *lst);
+//Errors
+
+void	free_list(t_list *lst);
+
+t_list	*lstnew(int num, int index, t_list *prev);  
+
+
 
 #endif
