@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static t_list	*s_alloc(char *s)
+t_list	*s_alloc(char *s)
 {
 	int		i;
 	char	**nums;
@@ -31,7 +31,7 @@ static t_list	*s_alloc(char *s)
 	{
 		list->next = lstnew(ft_atoi(*nums), 0, list);
 		if (!list->next)
-			err_list("malloc failed at s_alloc", nums, s, list);
+			err_lst("malloc failed at s_alloc", nums, s, list);
 		list = list->next;
 		nums++;
 	}

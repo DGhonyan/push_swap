@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 void	err(char *msg, char **arr, char *s)
 {
 	perror(msg);

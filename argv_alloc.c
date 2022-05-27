@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static t_list	*argv_alloc(char **argv)
+t_list	*argv_alloc(char **argv)
 {
 	int		i;
 	int		j;
@@ -28,7 +28,7 @@ static t_list	*argv_alloc(char **argv)
 	{
 		nums = ft_split(argv[i], ' ');
 		if (!nums)
-			err_list("malloc failed at s_alloc", nums, NULL, list);
+			err_lst("malloc failed at s_alloc", nums, NULL, list);
 
 		
 
@@ -44,9 +44,9 @@ static void	argv_alloc_util(char **arg)
 	t_list	*lst;
 
 	i = 0;
-	lst = lstnew(ft_atoi())
-	while (arg[i])
-	{
+	// lst = lstnew(ft_atoi())
+	// while (arg[i])
+	// {
 
-	}
+	// }
 }
