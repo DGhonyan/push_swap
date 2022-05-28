@@ -23,6 +23,8 @@ int	lstsize(t_list *lst)
 	{
 		i++;
 		tmp = tmp->next;
+		if (!tmp || tmp->head == true)
+			break ;
 	}
 	return (i);
 }

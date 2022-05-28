@@ -21,6 +21,8 @@ t_list	*lstnew(int num, int index, t_list *prev)
 		return (NULL);
 	new->index = index;
 	new->num = num;
+	new->move = false;
+	new->head = false;
 	new->next = NULL;
 	new->prev = prev;
 	return (new);

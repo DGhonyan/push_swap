@@ -14,9 +14,14 @@
 
 void	free_list(t_list *lst)
 {
-	while (lst)
+	int		i;
+	t_list	*tmp;
+
+	i = lstsize(lst);
+	while (i--)
 	{
-		free(lst);
+		tmp = lst;
 		lst = lst->next;
+		free(tmp);
 	}
 }

@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdbool.h>
 
 # include "colors.h"
 # include "libft/libft.h"
@@ -25,6 +26,8 @@
 typedef struct s_list {
 	int				num;
 	int				index;
+	bool			head;
+	bool			move;
 	struct s_list	*next;
 	struct s_list	*prev;
 }	t_list;

@@ -12,10 +12,12 @@
 
 #include "push_swap.h"
 
+void	rotate(t_list *(*lst));
+
 int	main(int argc, char **argv)
 {
 	char	*s;
-	t_list	*lst;
+	t_list	(*lst);
 
 	s = NULL;
 	if (argc == 1)
@@ -31,9 +33,32 @@ int	main(int argc, char **argv)
 	check_args(argc, s);
 	lst = allocate_list(s);
 	_index(lst);
-	while (lst)
+	int i = lstsize(lst);
+	while (i--)
 	{
-		ft_printf(CYAN "%d %d\n", lst->num, lst->index);
-		lst = lst -> next;
+		while (lst)
+		{
+			ft_printf(CYAN "%d %d %d\n", lst->num, lst->index, lst->head);
+			lst = lst->next;
+			if (lst->head == true)
+				break ;
+		}
+		ft_printf("\n\n");
+		a(&lst);
+	}
+}
+
+void	rotate(t_list **lst)
+{
+	while (*lst)
+	{
+		*lst = (*lst)->next;
+		if ((*lst)->head == true)
+		{
+			(*lst)->head = false;
+			(*lst) = (*lst)->next;
+			(*lst)->head = true;
+			break ;
+		}
 	}
 }
