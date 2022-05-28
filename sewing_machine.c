@@ -30,9 +30,9 @@ char	*sewing_machine(char **argv)
 			return (NULL);
 		i++;
 	}
-	//ft_printf(MAGENTA "%s\n" RESET, s);
 	return (s);
 }
+
 static char	*sewing_utils(char *s, char *s2)
 {
 	int		i;
@@ -40,7 +40,10 @@ static char	*sewing_utils(char *s, char *s2)
 
 	res = malloc(sizeof (*res) * (ft_strlen(s) + ft_strlen(s2) + 2));
 	if (!res)
+	{
+		free(s);
 		return (NULL);
+	}
 	i = 0;
 	while (s[i])
 	{

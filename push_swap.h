@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lstnew.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dghonyan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/27 19:28:49 by dghonyan          #+#    #+#             */
+/*   Updated: 2022/05/27 19:31:46 by dghonyan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 
 # define PUSH_SWAP_H
@@ -17,25 +29,22 @@ typedef struct s_list {
 	struct s_list	*prev;
 }	t_list;
 
-void	check_args(int argc, char **argv, char *s);
+//Args
+void	check_args(int argc, char *s);
+char	*sewing_machine(char **argv);
+//Args
 
 //Errors
 void	err(char *msg, char **arr, char *s);
 void	err_lst(char *msg, char **arr, char *s, t_list *lst);
 //Errors
 
-char	*sewing_machine(char **argv);
-
-void	free_list(t_list *lst);
+//Lists
 int		lstsize(t_list *lst);
-
-
+void	free_list(t_list *lst);
 void	_index(t_list *lst);
-
 t_list	*allocate_list(char *s);
-
-t_list	*lstnew(int num, int index, t_list *prev);  
-
-
+t_list	*lstnew(int num, int index, t_list *prev);
+//Lists
 
 #endif

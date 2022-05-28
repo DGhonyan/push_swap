@@ -37,7 +37,7 @@ static t_list	*alloc(char *s)
 	nums = ft_split(s, ' ');
 	if (!nums)
 		err("malloc failed at s_alloc", NULL, s);
-	list = lstnew(ft_atoi(nums[0]), 0, NULL);
+	list = lstnew(ft_atoi(nums[0]), -1, NULL);
 	if (!list)
 		err("Can't allocate the list", nums, s);
 	temp = list;
@@ -46,7 +46,7 @@ static t_list	*alloc(char *s)
 	{
 		list->next = lstnew(ft_atoi(nums[i]), -1, list);
 		if (!list->next)
-			err_lst("malloc failed at s_alloc", nums, s, list);
+			err_lst("malloc failed at alloc", nums, s, list);
 		list = list->next;
 		i++;
 	}

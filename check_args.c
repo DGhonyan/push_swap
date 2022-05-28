@@ -1,33 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lstnew.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dghonyan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/27 19:28:49 by dghonyan          #+#    #+#             */
+/*   Updated: 2022/05/27 19:31:46 by dghonyan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	is_a_number(char **arg);
 static int	check_quotes(char *s, int dbl, int sngl);
 static void	ft_printf_exit(char *msg, char *s, char **arr);
 
-void	check_args(int argc, char **argv, char *s)
+void	check_args(int argc, char *s)
 {
-	int		i;
-	char	*tmp;
 	char	**arg;
 
-	i = 1;
-	if (s)
-		i = argc - 1;
 	check_quotes(s, 0, 0);
-	while (i < argc)
-	{
-		if (s)
-			tmp = s;
-		else
-			tmp = argv[i];
-		arg = ft_split(tmp, ' ');
-		if (!arg)
-			ft_printf_exit("failed to split argv", s, NULL);
-		if (!is_a_number(arg))
-			ft_printf_exit("YOU BITCH", s, arg);
-		free_ptr_arr(arg);
-		i++;
-	}
+	arg = ft_split(s, ' ');
+	if (!arg)
+		ft_printf_exit("failed to split argv", s, NULL);
+	if (!is_a_number(arg))
+		ft_printf_exit("YOU BITCH", s, arg);
+	free_ptr_arr(arg);
 }
 
 static int	is_a_number(char **arg)
@@ -73,6 +72,8 @@ static int	check_quotes(char *s, int dbl, int sngl)
 	}
 	if (double_ % 2 != 0 || single_ % 2 != 0)
 		ft_printf_exit("WRONG QUOTES SHITHEAD", s, NULL);
+	else if (double_ + single_ == ft_strlen(s))
+		ft_printf_exit("You can't do that", s, NULL);
 	return (1);
 }
 

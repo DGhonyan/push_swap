@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lstnew.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dghonyan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/27 19:28:49 by dghonyan          #+#    #+#             */
+/*   Updated: 2022/05/27 19:31:46 by dghonyan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	get_min(t_list *lst);
@@ -10,21 +22,11 @@ void	_index(t_list *lst)
 
 	i = 0;
 	min = get_min(lst);
-	ft_printf("%d\n", lstsize(lst));
 	while (i < lstsize(lst))
 	{
-		ft_printf("##%d\n", min);
 		assign(lst, min, i);
 		min = get_min(lst);
 		i++;
-	}
-
-	while (lst)
-	{
-		//if (lst->num == min)
-		ft_printf(GREEN "%d %d\n" RESET, lst->index, lst->num);
-		//	lst->index = i++;
-		lst = lst->next;
 	}
 }
 
