@@ -39,11 +39,7 @@ static void	assign(t_list *lst, int num, int index)
 		lst = lst->next;
 		if (lst->head == true)
 			break ;
-	}
-	// if (lst->num == num)
-	// 	lst->index = index;
-	// while (lst->prev)
-	// 	lst = lst->prev;
+	} 
 }
 
 static int	get_min(t_list *lst)

@@ -23,6 +23,11 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
+typedef struct s_seq {
+	int	num;
+	int	seq;
+}	t_seq;
+
 typedef struct s_list {
 	int				num;
 	int				index;
@@ -46,6 +51,8 @@ void	err_lst(char *msg, char **arr, char *s, t_list *lst);
 int		lstsize(t_list *lst);
 void	free_list(t_list *lst);
 void	_index(t_list *lst);
+void	lstrotate(t_list **lst);
+void	swap(t_list **lst);
 t_list	*allocate_list(char *s);
 t_list	*lstnew(int num, int index, t_list *prev);
 //Lists
