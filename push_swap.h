@@ -33,6 +33,7 @@ typedef struct s_list {
 	int				index;
 	bool			head;
 	bool			move;
+	bool			pushed;
 	struct s_list	*next;
 	struct s_list	*prev;
 }	t_list;
@@ -53,6 +54,7 @@ void	free_list(t_list *lst);
 void	_index(t_list *lst);
 void	lstrotate(t_list **lst);
 void	swap(t_list **lst);
+t_list	*push_b(t_list *lst, t_list *lst_b);
 t_list	*allocate_list(char *s);
 t_list	*lstnew(int num, int index, t_list *prev);
 //Lists
