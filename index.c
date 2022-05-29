@@ -14,6 +14,7 @@
 
 static int	get_min(t_list *lst);
 static void	assign(t_list *lst, int num, int index);
+static void	assign_min(t_list *lst);
 
 void	_index(t_list *lst)
 {
@@ -21,6 +22,7 @@ void	_index(t_list *lst)
 	int		min;
 
 	i = 0;
+	assign_min(lst);
 	min = get_min(lst);
 	while (i < lstsize(lst))
 	{
@@ -36,6 +38,17 @@ static void	assign(t_list *lst, int num, int index)
 	{
 		if (lst->num == num)
 			lst->index = index;
+		lst = lst->next;
+		if (lst->head == true)
+			break ;
+	} 
+}
+
+static void	assign_min(t_list *lst)
+{
+	while (lst)
+	{
+		lst->index = -1;
 		lst = lst->next;
 		if (lst->head == true)
 			break ;

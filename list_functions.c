@@ -34,6 +34,8 @@ int	lstsize(t_list *lst)
 	int		i;
 	t_list	*tmp;
 
+	if (!lst)
+		return (0);
 	i = 0;
 	tmp = lst;
 	while (tmp)

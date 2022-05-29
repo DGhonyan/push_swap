@@ -52,6 +52,7 @@ void	err_lst(char *msg, char **arr, char *s, t_list *lst);
 int		lstsize(t_list *lst);
 void	free_list(t_list *lst);
 void	_index(t_list *lst);
+void	lstdel(t_list **lst);
 void	lstrotate(t_list **lst);
 void	swap(t_list **lst);
 t_list	*push_b(t_list *lst, t_list *lst_b);

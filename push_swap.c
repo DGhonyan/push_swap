@@ -12,6 +12,36 @@
 
 #include "push_swap.h"
 
+void	exit_success(t_list *lst, t_list *b)
+{
+	while (lst)
+	{
+		if (!lst->next->head && lst->num > lst->next->num)
+			return ;
+		lst = lst->next;
+		if (lst->head)
+			break ;
+	}
+	if (lstsize(b) == 0)
+	{
+		free_list(lst);
+		exit (EXIT_SUCCESS);
+	}
+}
+
+void	print_list(t_list *lst)
+{
+	ft_printf("\n");
+	while (lst)
+	{
+		ft_printf("%d %d\n", lst->num, lst->index);
+		lst = lst->next;
+		if (lst->head)
+			break ;
+	}
+	ft_printf("\n");
+}
+
 int	swapped(t_list *lst)
 {
 	int		sequence;
@@ -84,39 +114,43 @@ int	largest_sequence(t_list *lst)
 
 	i = lstsize(lst);
 	b = NULL;
-	sequence = malloc(sizeof (*sequence) * i);
 	mark_to_move(lst);
 	while (have_to_move(lst))
 	{
 		ft_printf("\n");
-		mark_to_move(lst);
 		if (swapped(lst) > non_swapped(lst))
 		{
+			// ft_printf("BEFORE");
+			// print_list(lst);
 			swap(&lst);
-			ft_printf(GREEN "sa %d\n" RESET, lst->num);
+			_index(lst);
+			mark_to_move(lst);
+			ft_printf(GREEN "sa\n");
+			// ft_printf(GREEN "AFTER");
+			print_list(lst);
 		}
 		else if (lst->head && lst->move)
 		{
+			// ft_printf("BEFORE");
+			// print_list(lst);
 			b = push_b(lst, b);
-			lst->move = false;
-			lst->pushed = true;
-			ft_printf(GREEN "pb %d\n" RESET, lst->num);
+			lstdel(&lst);
+			_index(lst);
+			ft_printf(GREEN "pb\n" RESET);
+			// ft_printf(GREEN "AFTER");
+			print_list(lst);
 		}
 		else
 		{
+			// ft_printf("BEFORE");
+			// print_list(lst);
 			lstrotate(&lst);
-			ft_printf(GREEN "ra %d\n" RESET, lst->num);
+			_index(lst);
+			ft_printf(GREEN "ra\n" RESET);
+			// ft_printf(GREEN "AFTER");
+			print_list(lst);
 		}
-		// ft_printf("%d\n", move_count(lst));
-		ft_printf("\n");
-		while (lst)
-		{
-			if (!lst->pushed)
-				ft_printf("%d %d\n", lst->num, lst->index);
-			lst = lst->next;
-			if (lst->head)
-				break ;
-		}
+		exit_success(lst, b);
 	}
 	ft_printf("\n");
 	while (b)
@@ -124,14 +158,11 @@ int	largest_sequence(t_list *lst)
 		ft_printf("%d %d\n", b->num, b->index);
 		b = b->next;
 	}
-	free(sequence);
 	return (0);
 }
 
-
 int	main(int argc, char **argv)
 {
-	int		i;
 	char	*s;
 	t_list	*lst;
 
@@ -150,8 +181,17 @@ int	main(int argc, char **argv)
 	lst = allocate_list(s);
 	free(s);
 	_index(lst);
+	int i = lstsize(lst);
+	// while (i--)
+	// {
+	// 	print_list(lst);
+	// 	ft_printf(RED "%d\n" RESET, lstsize(lst));
+	// 	lstdel(&lst);
+	// }
+	//ft_printf("%d %d %d\n", lst->num, lst->next->num, lst->next->next->num);
 	largest_sequence(lst);
-	free_list(lst);
+	// ft_printf("SASKJASD");
+	// free_list(lst);
 	// ft_printf("%d\n", lst->num);
 	// swapped(lst);
 	// ft_printf("%d\n", lst->num);
