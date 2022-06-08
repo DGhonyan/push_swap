@@ -82,6 +82,13 @@ void	mark_to_move(t_list *lst)
 {
 	while (lst)
 	{
+		lst->next->move = false;
+		lst = lst->next;
+		if (lst->head)
+			break ;
+	}
+	while (lst)
+	{
 		if (!lst->next->head && lst->index - lst->next->index != -1)
 			lst->next->move = true;
 		lst = lst->next;
@@ -120,37 +127,28 @@ int	largest_sequence(t_list *lst)
 		ft_printf("\n");
 		if (swapped(lst) > non_swapped(lst))
 		{
-			// ft_printf("BEFORE");
-			// print_list(lst);
 			swap(&lst);
 			_index(lst);
 			mark_to_move(lst);
 			ft_printf(GREEN "sa\n");
-			// ft_printf(GREEN "AFTER");
 			print_list(lst);
 		}
 		else if (lst->head && lst->move)
 		{
-			// ft_printf("BEFORE");
-			// print_list(lst);
 			b = push_b(lst, b);
 			lstdel(&lst);
 			_index(lst);
 			ft_printf(GREEN "pb\n" RESET);
-			// ft_printf(GREEN "AFTER");
 			print_list(lst);
 		}
 		else
 		{
-			// ft_printf("BEFORE");
-			// print_list(lst);
 			lstrotate(&lst);
 			_index(lst);
 			ft_printf(GREEN "ra\n" RESET);
-			// ft_printf(GREEN "AFTER");
 			print_list(lst);
 		}
-		exit_success(lst, b);
+		//exit_success(lst, b);
 	}
 	ft_printf("\n");
 	while (b)
@@ -159,6 +157,11 @@ int	largest_sequence(t_list *lst)
 		b = b->next;
 	}
 	return (0);
+}
+
+char * sum(char *s)
+{
+	return (s);
 }
 
 int	main(int argc, char **argv)
@@ -182,17 +185,5 @@ int	main(int argc, char **argv)
 	free(s);
 	_index(lst);
 	int i = lstsize(lst);
-	// while (i--)
-	// {
-	// 	print_list(lst);
-	// 	ft_printf(RED "%d\n" RESET, lstsize(lst));
-	// 	lstdel(&lst);
-	// }
-	//ft_printf("%d %d %d\n", lst->num, lst->next->num, lst->next->next->num);
 	largest_sequence(lst);
-	// ft_printf("SASKJASD");
-	// free_list(lst);
-	// ft_printf("%d\n", lst->num);
-	// swapped(lst);
-	// ft_printf("%d\n", lst->num);
 }
