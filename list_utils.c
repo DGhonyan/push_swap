@@ -75,5 +75,10 @@ int	is_sorted(t_list *lst, t_list *b)
 		if (lst->head)
 			break ;
 	}
+	if (lstsize(b) == 0)
+	{
+		free_list(lst);
+		exit (EXIT_SUCCESS);
+	}
 	return (lstsize(b) == 0);
 }

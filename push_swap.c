@@ -24,36 +24,23 @@ int	largest_sequence(t_list *lst)
 	while (have_to_move(lst))
 	{
 		ft_printf("\n");
-		if (is_sorted(lst, b))
-			break ;
+		is_sorted(lst, b);
 		if (swapped(lst) > non_swapped(lst))
-		{
-			swap(&lst);
-			_index(lst);
-			mark_to_move(lst);
-			ft_printf(GREEN "sa\n");
-			print_list(lst);
-			if (is_sorted(lst, b))
-				break ;
-		}
+			list_swap(lst, b);
 		else if (lst->head && lst->move)
 		{
 			b = push_b(lst, b);
 			lstdel(&lst);
 			_index(lst);
-			//mark_to_move(lst);
 			ft_printf(GREEN "pb\n" RESET);
 			print_list(lst);
-			if (is_sorted(lst, b))
-				break ;
 		}
 		else
 		{
 			lstrotate(&lst);
 			ft_printf(GREEN "ra\n" RESET);
 			print_list(lst);
-			if (is_sorted(lst, b))
-				break ;
+			is_sorted(lst, b);
 		}
 	}
 	ft_printf("\n");
@@ -85,6 +72,5 @@ int	main(int argc, char **argv)
 	lst = allocate_list(s);
 	free(s);
 	_index(lst);
-	int i = lstsize(lst);
 	largest_sequence(lst);
 }

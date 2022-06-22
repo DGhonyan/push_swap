@@ -55,6 +55,7 @@ int		swapped(t_list *lst);
 int		non_swapped(t_list *lst);
 int		have_to_move(t_list *list);
 void	mark_to_move(t_list *lst);
+void	list_swap(t_list *lst, t_list *b);
 void	free_list(t_list *lst);
 void	_index(t_list *lst);
 void	lstdel(t_list **lst);

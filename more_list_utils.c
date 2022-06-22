@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   more_list_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dghonyan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/22 11:27:17 by dghonyan          #+#    #+#             */
+/*   Updated: 2022/06/22 11:27:18 by dghonyan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	swapped(t_list *lst)
@@ -63,7 +75,7 @@ int	have_to_move(t_list *list)
 	while (lst)
 	{
 		if (lst->move)
-			return (1); 
+			return (1);
 		lst = lst->next;
 		if (lst->head)
 			break ;
