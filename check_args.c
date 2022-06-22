@@ -37,7 +37,7 @@ static int	is_a_number(char **arg)
 	i = 0;
 	while (arg[i])
 	{
-		j = 0;
+		j = arg[i][0] == '-';
 		while (arg[i][j])
 		{
 			if (arg[i][j] < '0' || arg[i][j] > '9')

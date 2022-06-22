@@ -29,11 +29,11 @@ typedef struct s_seq {
 }	t_seq;
 
 typedef struct s_list {
-	int				num;
-	int				index;
 	bool			head;
 	bool			move;
 	bool			pushed;
+	int				num;
+	int				index;
 	struct s_list	*next;
 	struct s_list	*prev;
 }	t_list;
@@ -50,11 +50,17 @@ void	err_lst(char *msg, char **arr, char *s, t_list *lst);
 
 //Lists
 int		lstsize(t_list *lst);
+int		is_sorted(t_list *lst, t_list *b);
+int		swapped(t_list *lst);
+int		non_swapped(t_list *lst);
+int		have_to_move(t_list *list);
+void	mark_to_move(t_list *lst);
 void	free_list(t_list *lst);
 void	_index(t_list *lst);
 void	lstdel(t_list **lst);
 void	lstrotate(t_list **lst);
 void	swap(t_list **lst);
+void	print_list(t_list *lst);
 t_list	*push_b(t_list *lst, t_list *lst_b);
 t_list	*allocate_list(char *s);
 t_list	*lstnew(int num, int index, t_list *prev);
