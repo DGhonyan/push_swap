@@ -30,3 +30,13 @@ void	err_lst(char *msg, char **arr, char *s, t_list *lst)
 	free(s);
 	exit (EXIT_FAILURE);
 }
+
+void	err_only_lst(char *msg, t_list *lst, t_list *lst_b)
+{
+	ft_printf(RED "%s\n" RESET, msg);
+	if (lst_b)
+		free_list(lst_b);
+	if (lst)
+		free_list(lst);
+	exit (EXIT_FAILURE);
+}

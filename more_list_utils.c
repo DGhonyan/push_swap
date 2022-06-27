@@ -82,3 +82,18 @@ int	have_to_move(t_list *list)
 	}
 	return (0);
 }
+
+t_list	*lstlast(t_list *list)
+{
+	t_list	*lst;
+
+	lst = list;
+	while (lst)
+	{
+		lst = lst->next;
+		if (lst->next->head)
+			return (lst);
+	}
+	return (NULL);
+	
+}

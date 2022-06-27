@@ -46,6 +46,7 @@ char	*sewing_machine(char **argv);
 //Errors
 void	err(char *msg, char **arr, char *s);
 void	err_lst(char *msg, char **arr, char *s, t_list *lst);
+void	err_only_lst(char *msg, t_list *lst, t_list *lst_b);
 //Errors
 
 //Lists
@@ -62,7 +63,8 @@ void	lstdel(t_list **lst);
 void	lstrotate(t_list **lst);
 void	swap(t_list **lst);
 void	print_list(t_list *lst);
-t_list	*push_b(t_list *lst, t_list *lst_b);
+void	push_b(t_list *lst, t_list *lst_b);
+t_list	*lstlast(t_list *list);
 t_list	*allocate_list(char *s);
 t_list	*lstnew(int num, int index, t_list *prev);
 //Lists
