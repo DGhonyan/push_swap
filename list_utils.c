@@ -12,24 +12,26 @@
 
 #include "push_swap.h"
 
-void	push_b(t_list *lst, t_list *lst_b)
+void	push_b(t_list *lst, t_list **lst_b)
 {
 	t_list	*new;
-	printf("AKJHDGKASHDGASD");
-	if (!lst_b)
+
+	if (!(*lst_b))
 	{
-		lst_b = lstnew(lst->num, lst->index, NULL);
-		if (!lst_b)
+		printf("B WAS NULL");
+		(*lst_b) = lstnew(lst->num, lst->index, NULL);
+		printf("%d\n", (*lst_b)->num);
+		if (!(*lst_b))
 			err_lst("malloc failed lol", NULL, NULL, lst);
-		lst_b->next = lst_b;
-		lst_b->head = 1;
+		(*lst_b)->next = (*lst_b);
+		(*lst_b)->head = 1;
 		return ;
 	}
 	new = lstnew(lst->num, lst->index, NULL);
 	if (!new)
-		err_only_lst("malloc failed lol 2", lst, lst_b);
-	lstlast(lst_b)->next = new;
-	new->next = lst_b;
+		err_only_lst("malloc failed lol 2", lst, (*lst_b));
+	lstlast((*lst_b))->next = new;
+	new->next = (*lst_b);
 }
 
 void	lstdel(t_list **lst)

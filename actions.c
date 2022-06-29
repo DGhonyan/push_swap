@@ -18,6 +18,5 @@ void	list_swap(t_list *lst, t_list *b)
 	_index(lst);
 	mark_to_move(lst);
 	ft_printf(GREEN "sa\n");
-	// print_list(lst);
 	is_sorted(lst, b);
 }
