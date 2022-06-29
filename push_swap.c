@@ -38,14 +38,8 @@ int	largest_sequence(t_list *lst)
 	{
 		ft_printf("\n");
 		is_sorted(lst, b);
-		// if (is_sorted_break(lst))
-		// {
-		// 	printf(YELLOW "BREAK %d %d\n" RESET, lst->num, lst->index);
-		// 	print_list(lst);
-		// 	ft_printf("END\n");
-		// 	break ;
-		// }
-	
+		if (is_sorted_break(lst))
+			break ;
 		if (swapped(lst) > non_swapped(lst))
 		{
 			list_swap(lst, b);
