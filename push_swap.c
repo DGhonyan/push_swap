@@ -12,6 +12,19 @@
 
 #include "push_swap.h"
 
+int	is_sorted_break(t_list *lst)
+{
+	while (lst)
+	{
+		if (!lst->next->head && lst->num > lst->next->num)
+			return (0);
+		lst = lst->next;
+		if (lst->head)
+			break ;
+	}
+	return (1);
+}
+
 int	largest_sequence(t_list *lst)
 {
 	int		i;
@@ -25,6 +38,14 @@ int	largest_sequence(t_list *lst)
 	{
 		ft_printf("\n");
 		is_sorted(lst, b);
+		// if (is_sorted_break(lst))
+		// {
+		// 	printf(YELLOW "BREAK %d %d\n" RESET, lst->num, lst->index);
+		// 	print_list(lst);
+		// 	ft_printf("END\n");
+		// 	break ;
+		// }
+	
 		if (swapped(lst) > non_swapped(lst))
 		{
 			list_swap(lst, b);
@@ -32,22 +53,17 @@ int	largest_sequence(t_list *lst)
 		}
 		else if (lst->head && lst->move)
 		{
-			push_b(lst, &b);
-			lstdel(&lst);
-			_index(lst);
-			ft_printf(GREEN "pb\n" RESET);
-			print_list(lst);
+			pb(&lst, &b);
 		}
 		else
 		{
 			lstrotate(&lst);
 			ft_printf(GREEN "ra\n" RESET);
-			// mark_to_move(lst);
 			print_list(lst);
 			is_sorted(lst, b);
 		}
 	}
-	ft_printf("\n");
+	ft_printf("\nEND");
 	print_list(b);
 	return (0);
 }
@@ -72,25 +88,5 @@ int	main(int argc, char **argv)
 	lst = allocate_list(s);
 	free(s);
 	_index(lst);
-	t_list *b = NULL;
 	largest_sequence(lst);
-	// push_b(lst, &b);
-	// printf(RED "A" RESET);
-	// push_b(lst->next, &b);
-	// printf(RED "A" RESET);
-	// push_b(lst->next, &b);
-	// printf(RED "A" RESET);
-	// push_b(lst->next, &b);
-	// printf(RED "A" RESET);
-	// push_b(lst->next, &b);
-	// printf(RED "A" RESET);
-	// push_b(lst, &b);
-	// printf(RED "A" RESET);
-	// while (1)
-	// {
-	// 	printf("%d\n", b->num);
-	// 	b = b->next;
-	// 	if (b->head)
-	// 		break ;
-	// }
 }

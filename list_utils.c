@@ -18,7 +18,6 @@ void	push_b(t_list *lst, t_list **lst_b)
 
 	if (!(*lst_b))
 	{
-		printf("B WAS NULL");
 		(*lst_b) = lstnew(lst->num, lst->index, NULL);
 		printf("%d\n", (*lst_b)->num);
 		if (!(*lst_b))
@@ -63,7 +62,7 @@ void	print_list(t_list *lst)
 	ft_printf("\n");
 	while (lst)
 	{
-		ft_printf("%d %d\n", lst->num, lst->index);
+		ft_printf("%d %d %d\n", lst->num, lst->index, lst->move);
 		lst = lst->next;
 		if (lst->head)
 			break ;

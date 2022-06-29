@@ -52,7 +52,7 @@ void	mark_to_move(t_list *lst)
 {
 	while (lst)
 	{
-		lst->next->move = false;
+		lst->next->move = 0;
 		lst = lst->next;
 		if (lst->head)
 			break ;
@@ -60,7 +60,7 @@ void	mark_to_move(t_list *lst)
 	while (lst)
 	{
 		if (!lst->next->head && lst->index - lst->next->index != -1)
-			lst->next->move = true;
+			lst->next->move = 1;
 		lst = lst->next;
 		if (lst->head)
 			break ;
@@ -95,5 +95,4 @@ t_list	*lstlast(t_list *list)
 			return (lst);
 	}
 	return (NULL);
-	
 }

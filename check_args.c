@@ -37,6 +37,8 @@ static int	is_a_number(char **arg)
 	i = 0;
 	while (arg[i])
 	{
+		if (arg[i][0] == '-' && ft_strlen(arg[i]) == 1)
+			return (0);
 		j = arg[i][0] == '-';
 		while (arg[i][j])
 		{

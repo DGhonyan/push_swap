@@ -20,3 +20,12 @@ void	list_swap(t_list *lst, t_list *b)
 	ft_printf(GREEN "sa\n");
 	is_sorted(lst, b);
 }
+
+void	pb(t_list **lst, t_list **b)
+{
+	push_b(*lst, b);
+	lstdel(lst);
+	_index(*lst);
+	ft_printf(GREEN "pb\n" RESET);
+	print_list(*lst);
+}
