@@ -27,31 +27,6 @@ t_list	*allocate_list(char *s)
 	return (list);
 }
 
-// t_list	*allocate_list_b(t_list *lst_a, char *s)
-// {
-// 	int		i;
-// 	t_list	*lst;
-// 	t_list	*tmp;
-
-// 	i = 0;
-// 	lst = lstnew(0, -1, NULL);
-// 	if (!lst)
-// 		return (NULL);
-// 	tmp = lst;
-// 	while (i < lstsize(lst_a))
-// 	{
-// 		lst->next = lstnew(0, -1, lst);
-// 		if (!lst->next)
-// 		{
-// 			free_list(lst);
-// 			return (NULL);
-// 		}
-// 		lst = lst->next;
-// 		i++;
-// 	}
-// 	return (lst);
-// }
-
 static t_list	*alloc(char *s)
 {
 	int		i;

@@ -25,13 +25,10 @@ int	is_sorted_break(t_list *lst)
 	return (1);
 }
 
-int	largest_sequence(t_list *lst)
+int	fill_b(t_list *lst)
 {
-	int		i;
 	t_list	*b;
-	t_seq	*sequence;
 
-	i = lstsize(lst);
 	b = NULL;
 	mark_to_move(lst);
 	while (have_to_move(lst))
@@ -40,10 +37,10 @@ int	largest_sequence(t_list *lst)
 		is_sorted(lst, b);
 		if (is_sorted_break(lst))
 			break ;
+		//printf("SWAPPED %d %d\n", swapped(&lst), non_swapped(&lst));
 		if (swapped(lst) > non_swapped(lst))
 		{
-			list_swap(lst, b);
-			print_list(lst);
+			list_swap(&lst);
 		}
 		else if (lst->head && lst->move)
 		{
@@ -52,14 +49,33 @@ int	largest_sequence(t_list *lst)
 		else
 		{
 			lstrotate(&lst);
-			ft_printf(GREEN "ra\n" RESET);
-			print_list(lst);
-			is_sorted(lst, b);
 		}
 	}
 	ft_printf("\nEND");
-	print_list(b);
+	//print_list(b);
 	return (0);
+}
+
+void	find_the_spot(t_list *lst, int num)
+{
+	t_list	*tmp;
+
+	while (1)
+	{
+		tmp = lst->next;
+		if (num > lst->num & num < tmp->num)
+		{
+
+		}
+	}
+}
+
+void	sort_a(t_list *a, t_list *b)
+{
+	while (lstsize(b))
+	{
+		
+	}
 }
 
 int	main(int argc, char **argv)
@@ -82,5 +98,11 @@ int	main(int argc, char **argv)
 	lst = allocate_list(s);
 	free(s);
 	_index(lst);
-	largest_sequence(lst);
+	printf("%d", (*lst).index);
+	// print_list(lst);
+	// print_list(lst);
+	printf("%d", (*lst).index);
+	// swapped(lst);
+	// non_swapped(lst);
+	// fill_b(lst);
 }

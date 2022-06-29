@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-void	list_swap(t_list *lst, t_list *b)
+void	list_swap(t_list **lst)
 {
-	swap(&lst);
-	_index(lst);
-	mark_to_move(lst);
-	ft_printf(GREEN "sa\n");
-	is_sorted(lst, b);
+	swap(lst);
+	_index(*lst);
+	mark_to_move(*lst);
+	ft_printf(GREEN "sa\n" RESET);
+	// print_list(*lst);
 }
 
 void	pb(t_list **lst, t_list **b)
@@ -27,5 +27,22 @@ void	pb(t_list **lst, t_list **b)
 	lstdel(lst);
 	_index(*lst);
 	ft_printf(GREEN "pb\n" RESET);
-	print_list(*lst);
+	// print_list(*lst);
+}
+
+void	lstrotate(t_list **lst)
+{
+	while (*lst)
+	{
+		*lst = (*lst)->next;
+		if ((*lst)->head == true)
+		{
+			(*lst)->head = false;
+			(*lst) = (*lst)->next;
+			(*lst)->head = true;
+			break ;
+		}
+	}
+	ft_printf(GREEN "ra\n" RESET);
+	// print_list(*lst);
 }
