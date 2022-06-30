@@ -29,8 +29,12 @@ void	push_b(t_list *lst, t_list **lst_b)
 	new = lstnew(lst->num, lst->index, NULL);
 	if (!new)
 		err_only_lst("malloc failed lol 2", lst, (*lst_b));
+	new->head = 0;
 	lstlast((*lst_b))->next = new;
+	// printf("%d\n", (*lst_b)->num);
+	(*lst_b)->head = 1;
 	new->next = (*lst_b);
+	// new->head = 1;
 }
 
 void	lstdel(t_list **lst)
@@ -60,7 +64,7 @@ void	lstdel(t_list **lst)
 void	print_list(t_list *lst)
 {
 	ft_printf("\n");
-	while (lst)
+	while (1)
 	{
 		ft_printf("%d %d %d\n", lst->num, lst->index, lst->move);
 		lst = lst->next;

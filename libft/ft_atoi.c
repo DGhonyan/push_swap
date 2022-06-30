@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 static int	ft_isspace(const char *str)
 {
 	int	i;
@@ -25,11 +27,11 @@ static int	ft_isspace(const char *str)
 	return (i);
 }
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	int	i;
-	int	minus;
-	int	res;
+	int			i;
+	long long	minus;
+	long long	res;
 
 	minus = 1;
 	res = 0;

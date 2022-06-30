@@ -12,9 +12,7 @@
 
 #include "push_swap.h"
 
-static int	get_min(t_list *lst);
 static void	assign(t_list *lst, int num, int index);
-static void	assign_min(t_list *lst);
 
 void	_index(t_list *lst)
 {
@@ -44,7 +42,7 @@ static void	assign(t_list *lst, int num, int index)
 	}
 }
 
-static void	assign_min(t_list *lst)
+void	assign_min(t_list *lst)
 {
 	while (lst)
 	{
@@ -55,7 +53,7 @@ static void	assign_min(t_list *lst)
 	}
 }
 
-static int	get_min(t_list *lst)
+int	get_min(t_list *lst)
 {
 	int		min;
 	t_list	*tmp;
@@ -71,4 +69,22 @@ static int	get_min(t_list *lst)
 			break ;
 	}
 	return (min);
+}
+
+int	get_max(t_list *lst)
+{
+	int		max;
+	t_list	*tmp;
+
+	max = INT_MIN;
+	tmp = lst;
+	while (tmp)
+	{
+		if (max < tmp->num && tmp->index == -1)
+			max = tmp->num;
+		tmp = tmp->next;
+		if (tmp->head == true)
+			break ;
+	}
+	return (max);
 }

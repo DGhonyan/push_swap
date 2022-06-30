@@ -25,7 +25,7 @@ int	is_sorted_break(t_list *lst)
 	return (1);
 }
 
-int	fill_b(t_list *lst)
+void	fill_b(t_list *lst)
 {
 	t_list	*b;
 
@@ -37,45 +37,53 @@ int	fill_b(t_list *lst)
 		is_sorted(lst, b);
 		if (is_sorted_break(lst))
 			break ;
-		//printf("SWAPPED %d %d\n", swapped(&lst), non_swapped(&lst));
 		if (swapped(lst) > non_swapped(lst))
-		{
 			list_swap(&lst);
-		}
 		else if (lst->head && lst->move)
-		{
 			pb(&lst, &b);
-		}
 		else
-		{
 			lstrotate(&lst);
-		}
 	}
 	ft_printf("\nEND");
-	//print_list(b);
-	return (0);
+	print_list(b);
+	sort_a(lst, b);
 }
 
 void	find_the_spot(t_list *lst, int num)
 {
 	t_list	*tmp;
 
-	while (1)
-	{
-		tmp = lst->next;
-		if (num > lst->num & num < tmp->num)
-		{
-
-		}
-	}
+	
 }
 
 void	sort_a(t_list *a, t_list *b)
 {
-	while (lstsize(b))
-	{
-		
-	}
+	printf("\n");
+	assign_min(a);
+	// print_list(a);
+	// printf("MAX %d\n", get_max(a));
+	// print_list(a);
+	// printf("MIN %d\n", get_min(a));
+	// print_list(a);
+	push_b(b, &a);
+	lstdel(&b);
+	print_list(a);
+	print_list(b);
+	// while (0)
+	// {
+	// 	if (b->num < get_min(a))
+	// 	{
+			
+	// 	}
+	// 	else if (b->num > get_max(a))
+	// 	{
+
+	// 	}
+	// 	else if (b->num > a->num & b->num < a->next->num)
+	// 	{
+
+	// 	}
+	// }
 }
 
 int	main(int argc, char **argv)
@@ -98,11 +106,5 @@ int	main(int argc, char **argv)
 	lst = allocate_list(s);
 	free(s);
 	_index(lst);
-	printf("%d", (*lst).index);
-	// print_list(lst);
-	// print_list(lst);
-	printf("%d", (*lst).index);
-	// swapped(lst);
-	// non_swapped(lst);
-	// fill_b(lst);
+	fill_b(lst);
 }

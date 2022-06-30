@@ -23,14 +23,9 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
-typedef struct s_seq {
-	int	num;
-	int	seq;
-}	t_seq;
-
 typedef struct s_list {
-	bool			head;
-	bool			move;
+	int				move;
+	int				head;
 	int				num;
 	int				spot;
 	int				index;
@@ -54,8 +49,12 @@ int		is_sorted(t_list *lst, t_list *b);
 int		swapped(t_list *lst);
 int		non_swapped(t_list *lst);
 int		have_to_move(t_list *list);
+int		get_min(t_list *lst);
+int		get_max(t_list *lst);
 void	mark_to_move(t_list *lst);
 void	list_swap(t_list **lst);
+void	sort_a(t_list *a, t_list *b);
+void	assign_min(t_list *lst);
 void	free_list(t_list *lst);
 void	_index(t_list *lst);
 void	lstdel(t_list **lst);

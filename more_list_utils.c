@@ -18,20 +18,16 @@ int	swapped(t_list *lst)
 
 	swap(&lst);
 	sequence = 0;
-	print_list(lst);
 	while (lst)
 	{
-		printf("%d %d\n", lst->index, lst->next->index);
 		if (!lst->next->head && lst->index - lst->next->index == -1)
 		{
 			sequence++;
-			printf("LOZX");
 		}
 		lst = lst->next;
 		if (lst->head)
 			break ;
 	}
-	printf("Swapped sequence %d\n", sequence);
 	swap(&lst);
 	return (sequence);
 }
@@ -43,14 +39,12 @@ int	non_swapped(t_list *lst)
 	sequence = 0;
 	while (lst)
 	{
-		printf("A");
 		if (!lst->next->head && lst->index - lst->next->index == -1)
 			sequence++;
 		lst = lst->next;
 		if (lst->head)
 			break ;
 	}
-	printf("NonSwapped sequence %d\n", sequence);
 	return (sequence);
 }
 
@@ -66,7 +60,10 @@ void	mark_to_move(t_list *lst)
 	while (lst)
 	{
 		if (!lst->next->head && lst->index - lst->next->index != -1)
+		{
 			lst->next->move = true;
+			break ;
+		}
 		lst = lst->next;
 		if (lst->head)
 			break ;
@@ -101,5 +98,4 @@ t_list	*lstlast(t_list *list)
 			return (lst);
 	}
 	return (NULL);
-	
 }
