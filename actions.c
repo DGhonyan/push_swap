@@ -18,7 +18,7 @@ void	list_swap(t_list **lst)
 	_index(*lst);
 	mark_to_move(*lst);
 	ft_printf(GREEN "sa\n" RESET);
-	print_list(*lst);
+	//print_list(*lst);
 }
 
 void	pb(t_list **lst, t_list **b)
@@ -28,7 +28,7 @@ void	pb(t_list **lst, t_list **b)
 	_index(*lst);
 	mark_to_move(*lst);
 	ft_printf(GREEN "pb\n" RESET);
-	print_list(*lst);
+	// print_list(*b);
 }
 
 void	lstrotate(t_list **lst)
@@ -45,5 +45,22 @@ void	lstrotate(t_list **lst)
 		}
 	}
 	ft_printf(GREEN "ra\n" RESET);
-	print_list(*lst);
+	//print_list(*lst);
+}
+
+void	rra(t_list **lst)
+{
+	while (*lst)
+	{
+		*lst = (*lst)->next;
+		if ((*lst)->next->head == true)
+		{
+			(*lst)->next->head = false;
+			//(*lst) = (*lst)->next;
+			(*lst)->head = true;
+			break ;
+		}
+	}
+	ft_printf(GREEN "rra\n" RESET);
+	//print_list(*lst);
 }

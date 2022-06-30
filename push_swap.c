@@ -33,7 +33,7 @@ void	fill_b(t_list *lst)
 	mark_to_move(lst);
 	while (have_to_move(lst))
 	{
-		ft_printf("\n");
+		// ft_printf("\n");
 		is_sorted(lst, b);
 		if (is_sorted_break(lst))
 			break ;
@@ -44,46 +44,66 @@ void	fill_b(t_list *lst)
 		else
 			lstrotate(&lst);
 	}
-	ft_printf("\nEND");
-	print_list(b);
+	// ft_printf("\nEND");
+	is_sorted(lst, b);
+	// print_list(b);
 	sort_a(lst, b);
 }
 
 void	find_the_spot(t_list *lst, int num)
 {
 	t_list	*tmp;
-
-	
 }
 
 void	sort_a(t_list *a, t_list *b)
 {
-	printf("\n");
+	int	min;
+	int	max;
+
 	assign_min(a);
-	// print_list(a);
-	// printf("MAX %d\n", get_max(a));
-	// print_list(a);
-	// printf("MIN %d\n", get_min(a));
-	// print_list(a);
-	push_b(b, &a);
-	lstdel(&b);
-	print_list(a);
-	print_list(b);
-	// while (0)
-	// {
-	// 	if (b->num < get_min(a))
-	// 	{
-			
-	// 	}
-	// 	else if (b->num > get_max(a))
-	// 	{
-
-	// 	}
-	// 	else if (b->num > a->num & b->num < a->next->num)
-	// 	{
-
-	// 	}
-	// }
+	while (lstsize(b))
+	{
+		if (b->num < get_min(a))
+		{
+			while (!(a->head && a->num == get_min(a)))
+			{
+				lstrotate(&a);
+				//print_list(a);
+				// printf("A");
+			}
+			push_b(b, &a);
+			lstdel(&b);
+		}
+		else if (b->num > get_max(a))
+		{
+			while (!(a->head && a->num == get_min(a)))
+			{
+				lstrotate(&a);
+				//printf("B");
+			}
+			push_b(b, &a);
+			lstdel(&b);
+			rra(&a);
+		}
+		else
+		{
+			while (!(b->num > a->num && b->num < a->next->num))
+			{
+				// printf("C");
+				lstrotate(&a);
+				//ft_printf("AAAAA\n");
+				//print_list(a);
+				//ft_printf("BBBBB\n");
+				//print_list(b);
+			}
+			push_b(b, &a);
+			lstdel(&b);
+			swap(&a);
+		}
+	}
+	while (!is_sorted_break(a))
+		lstrotate(&a);
+	//print_list(a);
 }
 
 int	main(int argc, char **argv)

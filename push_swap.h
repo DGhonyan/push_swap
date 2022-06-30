@@ -63,6 +63,7 @@ void	swap(t_list **lst);
 void	pb(t_list **lst, t_list **b);
 void	print_list(t_list *lst);
 void	push_b(t_list *lst, t_list **stack_b);
+void	rra(t_list **lst);
 t_list	*lstlast(t_list *list);
 t_list	*allocate_list(char *s);
 t_list	*lstnew(int num, int index, t_list *prev);
