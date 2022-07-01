@@ -44,7 +44,9 @@ void	fill_b(t_list *lst)
 			lstrotate(&lst);
 	}
 	is_sorted(lst, b);
-	sort_a(lst, b);
+	print_list(lst);
+	print_list(b);
+	//sort_a(lst, b);
 }
 
 void	find_the_spot(t_list *lst, int num)
