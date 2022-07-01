@@ -17,7 +17,6 @@ static int	check_quotes(char *s, int dbl, int sngl);
 static int	dupes(char **arg);
 static void	ft_printf_exit(char *msg, char *s, char **arr);
 
-
 void	check_args(int argc, char *s)
 {
 	char	**arg;
@@ -30,7 +29,6 @@ void	check_args(int argc, char *s)
 		ft_printf_exit("Wrong arguments", s, arg);
 	if (!dupes(arg))
 		ft_printf_exit("Duplicate arguments", s, arg);
-		// ft_printf_exit("YOU BITCH", s, arg);
 	free_ptr_arr(arg);
 }
 
