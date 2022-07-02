@@ -59,8 +59,12 @@ void	mark_to_move(t_list *lst)
 	{
 		if (!lst->next->head && lst->index - lst->next->index != -1)
 		{
-			lst->next->move = true;
+			lst->next->move = 1;
 			//break ;
+		}
+		else if (lst->next->head)
+		{
+			lst->move = 0;
 		}
 		lst = lst->next;
 		if (lst->head)
