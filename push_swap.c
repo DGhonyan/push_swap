@@ -12,30 +12,23 @@
 
 #include "push_swap.h"
 
-int	is_sorted_break(t_list *lst)
+void fill_b(t_list *lst)
 {
-	while (lst)
-	{
-		if (!lst->next->head && lst->num > lst->next->num)
-			return (0);
-		lst = lst->next;
-		if (lst->head)
-			break ;
-	}
-	return (1);
-}
-
-void	fill_b(t_list *lst)
-{
-	t_list	*b;
+	t_list *b;
+	void	(*rotate)(t_list **);
 
 	b = NULL;
+	rotate = &rra;
+	if (aaaaaaah(lst).index < lstsize(lst) / 2)
+		rotate = &lstrotate;
+	while (!(lst->head && lst->num == aaaaaaah(lst).num))
+		rotate(&lst);
 	mark_to_move(lst);
 	while (have_to_move(lst))
 	{
 		is_sorted(lst, b);
 		if (is_sorted_break(lst))
-			break ;
+			break;
 		if (swapped(lst) > non_swapped(lst))
 			list_swap(&lst);
 		else if (lst->head && lst->move)
@@ -46,17 +39,17 @@ void	fill_b(t_list *lst)
 	is_sorted(lst, b);
 	print_list(lst);
 	print_list(b);
-	//sort_a(lst, b);
+	// sort_a(lst, b);
 }
 
-void	find_the_spot(t_list *lst, int num)
+void find_the_spot(t_list *lst, int num)
 {
-	t_list	*tmp;
+	t_list *tmp;
 }
 
-void	sort_a(t_list *a, t_list *b)
+void sort_a(t_list *a, t_list *b)
 {
-	void	(*rotate)(t_list **);
+	void (*rotate)(t_list **);
 
 	assign_min(a);
 	while (lstsize(b))
@@ -100,10 +93,10 @@ void	sort_a(t_list *a, t_list *b)
 	free_list(a);
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	char	*s;
-	t_list	*lst;
+	char *s;
+	t_list *lst;
 
 	s = NULL;
 	if (argc == 1)
@@ -114,7 +107,7 @@ int	main(int argc, char **argv)
 	{
 		ft_printf(RED "malloc failed, earth will\
 			be destroyed in a minute\n" RESET);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	check_args(argc, s);
 	lst = allocate_list(s);

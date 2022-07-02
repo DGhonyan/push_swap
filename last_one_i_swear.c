@@ -51,3 +51,61 @@ int	_max(t_list *a, t_list *b)
 	}
 	return (where);
 }
+
+int is_sorted_break(t_list *lst)
+{
+	while (lst)
+	{
+		if (!lst->next->head && lst->num > lst->next->num)
+			return (0);
+		lst = lst->next;
+		if (lst->head)
+			break;
+	}
+	return (1);
+}
+
+t_what	aaaaaaah(t_list *list)
+{
+	int		i;
+	int		j;
+	int		max;
+	t_list	*lst;
+	t_what	aaah;
+
+	j = 0;
+	aaah.num = 0;
+	aaah.index = 0;
+	max = INT_MIN;
+	lst = list;
+	i = lstsize(list);
+	while (i--)
+	{
+		if (hello(lst) > max)
+		{
+			aaah.index = j;
+			aaah.num = lst->num;
+			max = hello(lst);
+		}
+		lstrotate_check(&lst);
+		j++;
+	}
+	return (aaah);
+}
+
+int	hello(t_list *tmp)
+{
+	int		i;
+
+	i = 0;
+	while (1)
+	{
+		if (!tmp->next->head && (tmp->index - tmp->next->index == -1))
+			i++;
+		tmp = tmp->next;
+		if (tmp->head)
+			break ;
+	}
+	// printf("HELLO %d\n", i);
+	return (i);
+}

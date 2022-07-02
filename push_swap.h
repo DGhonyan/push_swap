@@ -23,6 +23,13 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
+typedef struct s_what
+{
+	int	num;
+	int	index;
+}	t_what;
+
+
 typedef struct s_list {
 	int				move;
 	int				head;
@@ -44,7 +51,9 @@ void	err_only_lst(char *msg, t_list *lst, t_list *lst_b);
 //Errors
 
 //Lists
+int		hello(t_list *lst);
 int		lstsize(t_list *lst);
+int		is_sorted_break(t_list *lst);
 int		is_sorted(t_list *lst, t_list *b);
 int		swapped(t_list *lst);
 int		non_swapped(t_list *lst);
@@ -61,6 +70,7 @@ void	free_list(t_list *lst);
 void	_index(t_list *lst);
 void	lstdel(t_list **lst);
 void	lstrotate(t_list **lst);
+void	lstrotate_check(t_list **lst);
 void	swap(t_list **lst);
 void	pb(t_list **lst, t_list **b);
 void	print_list(t_list *lst);
@@ -69,6 +79,7 @@ void	rra(t_list **lst);
 t_list	*lstlast(t_list *list);
 t_list	*allocate_list(char *s);
 t_list	*lstnew(int num, int index, t_list *prev);
+t_what	aaaaaaah(t_list *list);
 //Lists
 
 #endif
