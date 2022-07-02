@@ -21,9 +21,7 @@ int	swapped(t_list *lst)
 	while (lst)
 	{
 		if (!lst->next->head && lst->index - lst->next->index == -1)
-		{
 			sequence++;
-		}
 		lst = lst->next;
 		if (lst->head)
 			break ;
@@ -62,7 +60,7 @@ void	mark_to_move(t_list *lst)
 		if (!lst->next->head && lst->index - lst->next->index != -1)
 		{
 			lst->next->move = true;
-			break ;
+			//break ;
 		}
 		lst = lst->next;
 		if (lst->head)

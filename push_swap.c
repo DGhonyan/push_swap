@@ -15,14 +15,14 @@
 void fill_b(t_list *lst)
 {
 	t_list *b;
-	void	(*rotate)(t_list **);
+	void	(*rotate)(t_list **, int);
 
 	b = NULL;
 	rotate = &rra;
 	if (aaaaaaah(lst).index < lstsize(lst) / 2)
 		rotate = &lstrotate;
 	while (!(lst->head && lst->num == aaaaaaah(lst).num))
-		rotate(&lst);
+		rotate(&lst, 0);
 	mark_to_move(lst);
 	while (have_to_move(lst))
 	{
@@ -34,53 +34,25 @@ void fill_b(t_list *lst)
 		else if (lst->head && lst->move)
 			pb(&lst, &b);
 		else
-			lstrotate(&lst);
+			lstrotate(&lst, 0);
 	}
 	is_sorted(lst, b);
-	// print_list(lst);
-	// print_list(b);
-	sort_a(lst, b);
-}
-
-void find_the_spot(t_list *lst, int num)
-{
-	t_list *tmp;
+	print_list(lst);
+	print_list(b);
+	//sort_a(lst, b);
 }
 
 void sort_a(t_list *a, t_list *b)
 {
 	int	min;
 	int	max;
-	void (*rotate)(t_list **);
+	void (*rotate)(t_list **, int);
 
 	assign_min(a);
 	while (lstsize(b))
 	{
 		min = 0;
 		max = 0;
-		// if (b->num < get_min(a) && (a->head && a->num == get_min(a)))
-		// {
-		// 	// rotate = &rra;
-		// 	// if (_max(a, b) < lstsize(a) / 2)
-		// 	// 	rotate = &lstrotate;
-		// 	// while (!(a->head && a->num == get_min(a)))
-		// 	// 	rotate(&a);
-		// 	push_b(b, &a, 1);
-		// 	lstdel(&b);
-		// }
-		// else if (b->num > get_max(a) && (a->head && a->num == get_min(a)))
-		// {
-		// 	// rotate = &rra;
-		// 	// if (_max(a, b) < lstsize(a) / 2)
-		// 	// 	rotate = &lstrotate;
-		// 	// while (!(a->head && a->num == get_min(a)))
-		// 	// 	rotate(&a);
-		// 	push_b(b, &a, 1);
-		// 	lstdel(&b);
-		// 	rra(&a);
-		// }
-		// else
-		// {
 		rotate = &rra;
 		if (choose_rotate(a, b) < lstsize(a) / 2)
 			rotate = &lstrotate;
@@ -96,25 +68,25 @@ void sort_a(t_list *a, t_list *b)
 				max = 1;
 				break ;
 			}
-			rotate(&a);
+			rotate(&a,0);
 		}
 		push_b(b, &a, 1);
 		lstdel(&b);
 		if (max)
-			rra(&a);
+			rra(&a, 0);
 		else if (!min && !max)
 			swap(&a);
-		// }
+		// } //
 	}
 	while (!is_sorted_break(a))
 	{
-		//printf("A");
-		lstrotate(&a);
+		lstrotate(&a, 0);
 	}
 	// print_list(a);
 	free_list(a);
 }
 
+//s = get_next_line_new(STDIN_FILENO);
 int main(int argc, char **argv)
 {
 	char *s;
@@ -123,7 +95,6 @@ int main(int argc, char **argv)
 	s = NULL;
 	if (argc == 1)
 		return (0);
-		//s = get_next_line_new(STDIN_FILENO);
 	s = sewing_machine(argv);
 	if (!s)
 	{
