@@ -37,9 +37,9 @@ void fill_b(t_list *lst)
 			lstrotate(&lst);
 	}
 	is_sorted(lst, b);
-	print_list(lst);
-	print_list(b);
-	// sort_a(lst, b);
+	// print_list(lst);
+	// print_list(b);
+	sort_a(lst, b);
 }
 
 void find_the_spot(t_list *lst, int num)
@@ -49,46 +49,68 @@ void find_the_spot(t_list *lst, int num)
 
 void sort_a(t_list *a, t_list *b)
 {
+	int	min;
+	int	max;
 	void (*rotate)(t_list **);
 
 	assign_min(a);
 	while (lstsize(b))
 	{
-		if (b->num < get_min(a))
+		min = 0;
+		max = 0;
+		// if (b->num < get_min(a) && (a->head && a->num == get_min(a)))
+		// {
+		// 	// rotate = &rra;
+		// 	// if (_max(a, b) < lstsize(a) / 2)
+		// 	// 	rotate = &lstrotate;
+		// 	// while (!(a->head && a->num == get_min(a)))
+		// 	// 	rotate(&a);
+		// 	push_b(b, &a, 1);
+		// 	lstdel(&b);
+		// }
+		// else if (b->num > get_max(a) && (a->head && a->num == get_min(a)))
+		// {
+		// 	// rotate = &rra;
+		// 	// if (_max(a, b) < lstsize(a) / 2)
+		// 	// 	rotate = &lstrotate;
+		// 	// while (!(a->head && a->num == get_min(a)))
+		// 	// 	rotate(&a);
+		// 	push_b(b, &a, 1);
+		// 	lstdel(&b);
+		// 	rra(&a);
+		// }
+		// else
+		// {
+		rotate = &rra;
+		if (choose_rotate(a, b) < lstsize(a) / 2)
+			rotate = &lstrotate;
+		while (!(b->num > a->num && b->num < a->next->num))
 		{
-			rotate = &rra;
-			if (_max(a, b) < lstsize(a) / 2)
-				rotate = &lstrotate;
-			while (!(a->head && a->num == get_min(a)))
-				rotate(&a);
-			push_b(b, &a, 1);
-			lstdel(&b);
+			if (b->num < get_min(a) && (a->head && a->num == get_min(a)))
+			{
+				min = 1;
+				break ;
+			}
+			else if (b->num > get_max(a) && (a->head && a->num == get_min(a)))
+			{
+				max = 1;
+				break ;
+			}
+			rotate(&a);
 		}
-		else if (b->num > get_max(a))
-		{
-			rotate = &rra;
-			if (_max(a, b) < lstsize(a) / 2)
-				rotate = &lstrotate;
-			while (!(a->head && a->num == get_min(a)))
-				rotate(&a);
-			push_b(b, &a, 1);
-			lstdel(&b);
+		push_b(b, &a, 1);
+		lstdel(&b);
+		if (max)
 			rra(&a);
-		}
-		else
-		{
-			rotate = &rra;
-			if (choose_rotate(a, b) < lstsize(a) / 2)
-				rotate = &lstrotate;
-			while (!(b->num > a->num && b->num < a->next->num))
-				rotate(&a);
-			push_b(b, &a, 1);
-			lstdel(&b);
+		else if (!min && !max)
 			swap(&a);
-		}
+		// }
 	}
 	while (!is_sorted_break(a))
+	{
+		//printf("A");
 		lstrotate(&a);
+	}
 	// print_list(a);
 	free_list(a);
 }
@@ -100,9 +122,9 @@ int main(int argc, char **argv)
 
 	s = NULL;
 	if (argc == 1)
-		s = get_next_line_new(STDIN_FILENO);
-	else
-		s = sewing_machine(argv);
+		return (0);
+		//s = get_next_line_new(STDIN_FILENO);
+	s = sewing_machine(argv);
 	if (!s)
 	{
 		ft_printf(RED "malloc failed, earth will\
