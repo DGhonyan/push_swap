@@ -29,7 +29,6 @@ typedef struct s_what
 	int	index;
 }	t_what;
 
-
 typedef struct s_list {
 	int				move;
 	int				head;

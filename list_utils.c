@@ -12,6 +12,19 @@
 
 #include "push_swap.h"
 
+int	norminette(t_list **lst)
+{
+	if (!lst)
+		return (0);
+	if (lstsize(*lst) == 1)
+	{
+		free(*lst);
+		*lst = NULL;
+		return (0);
+	}
+	return (1);
+}
+
 void	push_b(t_list *lst, t_list **lst_b, int lol)
 {
 	t_list	*new;
@@ -25,7 +38,7 @@ void	push_b(t_list *lst, t_list **lst_b, int lol)
 		(*lst_b)->head = 1;
 		return ;
 	}
-	new = lstnew(lst->num, -1, NULL);
+	new = lstnew(lst->num, lst->index, NULL);
 	if (!new)
 		err_only_lst("malloc failed lol 2", lst, (*lst_b));
 	new->head = 1;
@@ -42,14 +55,8 @@ void	lstdel(t_list **lst)
 	t_list	*tmp;
 	t_list	*tmp2;
 
-	if (!lst)
+	if (!norminette(lst))
 		return ;
-	if (lstsize(*lst) == 1)
-	{
-		free(*lst);
-		*lst = NULL;
-		return ;
-	}
 	tmp = *lst;
 	tmp2 = (*lst)->next;
 	while ((tmp)->next)

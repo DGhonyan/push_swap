@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-void fill_b(t_list *lst)
+void	fill_b(t_list *lst)
 {
-	t_list *b;
+	t_list	*b;
 	void	(*rotate)(t_list **, int);
 
 	b = NULL;
@@ -28,7 +28,7 @@ void fill_b(t_list *lst)
 	{
 		is_sorted(lst, b);
 		if (is_sorted_break(lst))
-			break;
+			break ;
 		if (swapped(lst) > non_swapped(lst))
 			list_swap(&lst);
 		else if (lst->head && lst->move)
@@ -39,14 +39,14 @@ void fill_b(t_list *lst)
 	is_sorted(lst, b);
 	print_list(lst);
 	print_list(b);
-	//sort_a(lst, b);
+	sort_a(lst, b);
 }
 
-void sort_a(t_list *a, t_list *b)
+void	sort_a(t_list *a, t_list *b)
 {
-	int	min;
-	int	max;
-	void (*rotate)(t_list **, int);
+	int		min;
+	int		max;
+	void	(*rotate)(t_list **, int);
 
 	assign_min(a);
 	while (lstsize(b))
@@ -76,7 +76,7 @@ void sort_a(t_list *a, t_list *b)
 			rra(&a, 0);
 		else if (!min && !max)
 			swap(&a);
-		// } //
+		// }
 	}
 	while (!is_sorted_break(a))
 	{
@@ -87,10 +87,10 @@ void sort_a(t_list *a, t_list *b)
 }
 
 //s = get_next_line_new(STDIN_FILENO);
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	char *s;
-	t_list *lst;
+	char	*s;
+	t_list	*lst;
 
 	s = NULL;
 	if (argc == 1)

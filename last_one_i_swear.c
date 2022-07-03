@@ -52,7 +52,7 @@ int	_max(t_list *a, t_list *b)
 	return (where);
 }
 
-int is_sorted_break(t_list *lst)
+int	is_sorted_break(t_list *lst)
 {
 	while (lst)
 	{
@@ -60,7 +60,7 @@ int is_sorted_break(t_list *lst)
 			return (0);
 		lst = lst->next;
 		if (lst->head)
-			break;
+			break ;
 	}
 	return (1);
 }
@@ -95,17 +95,22 @@ t_what	aaaaaaah(t_list *list)
 
 int	hello(t_list *tmp)
 {
-	int		i;
+	int	i;
+	int	head;
 
 	i = 0;
+	head = tmp->index;
+	tmp = tmp->next;
 	while (1)
 	{
-		if (!tmp->next->head && (tmp->index - tmp->next->index == -1))
+		if ((tmp->index - head == 1))
+		{
+			head = tmp->index;
 			i++;
+		}
 		tmp = tmp->next;
 		if (tmp->head)
 			break ;
 	}
-	// printf("HELLO %d\n", i);
 	return (i);
 }

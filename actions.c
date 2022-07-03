@@ -14,7 +14,7 @@
 
 void	gonna_delete_later(t_list *lst)
 {
-	//print_list(lst);
+	// print_list(lst);
 }
 
 void	list_swap(t_list **lst)
@@ -31,7 +31,6 @@ void	pb(t_list **lst, t_list **b)
 	push_b(*lst, b, 0);
 	lstdel(lst);
 	_index(*lst);
-	mark_to_move(*lst);
 	ft_printf("pb\n");
 	gonna_delete_later(*b);
 }
@@ -64,7 +63,6 @@ void	rra(t_list **lst, int b)
 		if ((*lst)->next->head == true)
 		{
 			(*lst)->next->head = false;
-			//(*lst) = (*lst)->next;
 			(*lst)->head = true;
 			break ;
 		}
@@ -89,5 +87,4 @@ void	lstrotate_check(t_list **lst)
 			break ;
 		}
 	}
-	//gonna_delete_later(*lst);
 }

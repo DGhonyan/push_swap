@@ -15,12 +15,15 @@
 int	swapped(t_list *lst)
 {
 	int		sequence;
+	int		head;
 
 	swap(&lst);
+	head = lst->index;
+	lst = lst->next;
 	sequence = 0;
 	while (lst)
 	{
-		if (!lst->next->head && lst->index - lst->next->index == -1)
+		if (!lst->index - head == 1)
 			sequence++;
 		lst = lst->next;
 		if (lst->head)
@@ -33,8 +36,11 @@ int	swapped(t_list *lst)
 int	non_swapped(t_list *lst)
 {
 	int		sequence;
+	int		head;
 
 	sequence = 0;
+	head = lst->index;
+	lst = lst->next;
 	while (lst)
 	{
 		if (!lst->next->head && lst->index - lst->next->index == -1)
@@ -48,6 +54,8 @@ int	non_swapped(t_list *lst)
 
 void	mark_to_move(t_list *lst)
 {
+	int	head;
+
 	while (lst)
 	{
 		lst->next->move = false;
@@ -55,17 +63,14 @@ void	mark_to_move(t_list *lst)
 		if (lst->head)
 			break ;
 	}
+	head = lst->index;
+	lst = lst->next;
 	while (lst)
 	{
-		if (!lst->next->head && lst->index - lst->next->index != -1)
-		{
-			lst->next->move = 1;
-			//break ;
-		}
-		else if (lst->next->head)
-		{
-			lst->move = 0;
-		}
+		if (lst->index - head == 1)
+			head = lst->index;
+		else
+			lst->move = 1;
 		lst = lst->next;
 		if (lst->head)
 			break ;
