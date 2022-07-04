@@ -75,6 +75,7 @@ void	mark_to_move(t_list *lst)
 		if (lst->head)
 			break ;
 	}
+	//print_list(lst);
 }
 
 int	have_to_move(t_list *list)

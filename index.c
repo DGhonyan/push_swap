@@ -48,7 +48,7 @@ void	assign_min(t_list *lst)
 	{
 		lst->index = -1;
 		lst = lst->next;
-		if (lst->head == true)
+		if (lst->head)
 			break ;
 	}
 }
@@ -65,7 +65,7 @@ int	get_min(t_list *lst)
 		if (min > tmp->num && tmp->index == -1)
 			min = tmp->num;
 		tmp = tmp->next;
-		if (tmp->head == true)
+		if (tmp->head)
 			break ;
 	}
 	return (min);
@@ -83,7 +83,7 @@ int	get_max(t_list *lst)
 		if (max < tmp->num && tmp->index == -1)
 			max = tmp->num;
 		tmp = tmp->next;
-		if (tmp->head == true)
+		if (tmp->head)
 			break ;
 	}
 	return (max);

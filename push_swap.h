@@ -14,6 +14,7 @@
 
 # define PUSH_SWAP_H
 
+# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
@@ -29,12 +30,22 @@ typedef struct s_what
 	int	index;
 }	t_what;
 
+typedef struct s_move
+{
+	int	ra;
+	int	rra;
+	int	rb;
+	int	rrb;
+	int	pb;
+	int	sa;
+}	t_move;
+
 typedef struct s_list {
 	int				move;
 	int				head;
 	int				num;
-	int				spot;
 	int				index;
+	int				spot;
 	struct s_list	*next;
 }	t_list;
 
@@ -61,7 +72,6 @@ int		get_min(t_list *lst);
 int		get_max(t_list *lst);
 int		_max(t_list *a);
 int		choose_rotate(t_list *a, t_list *b);
-int		calculate(t_list lst_a, t_list lst_b);
 void	mark_to_move(t_list *lst);
 void	list_swap(t_list **lst);
 void	sort_a(t_list *a, t_list *b);
@@ -76,6 +86,8 @@ void	swap(t_list **lst);
 void	pb(t_list **lst, t_list **b);
 void	print_list(t_list *lst);
 void	push_b(t_list *lst, t_list **stack_b, int lol);
+int		calculate(t_list *lst_a, t_list *lst_b);
+void	spot(t_list *a, t_list *b);
 t_list	*lstlast(t_list *list);
 t_list	*allocate_list(char *s);
 t_list	*lstnew(int num, int index, t_list *prev);

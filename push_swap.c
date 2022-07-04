@@ -23,14 +23,20 @@ void	fill_b(t_list *lst)
 		rotate = &lstrotate;
 	while (!(lst->head && lst->num == aaaaaaah(lst).num))
 		rotate(&lst, 0);
+	//print_list(lst);
 	mark_to_move(lst);
+	// spot(lst, b);
+	//print_list(lst);
 	while (have_to_move(lst))
 	{
 		is_sorted(lst, b);
 		if (is_sorted_break(lst))
 			break ;
 		if (swapped(lst) > non_swapped(lst))
+		{
+			print_list(lst);
 			list_swap(&lst);
+		}
 		else if (lst->head && lst->move)
 			pb(&lst, &b);
 		else
@@ -50,9 +56,24 @@ void	sort_a(t_list *a, t_list *b)
 
 	assign_min(a);
 	assign_min(b);
+	print_list(b);
+	min = INT_MAX;
+	//calculate(a, b);
+	int i = lstsize(b);
+	while (i--)
+	{
+		if (min > calculate(a, b));
+			min = calculate(a, b);
+		b = b->next;
+		if (b->head)
+			break ;
+	}
+	printf("%d\n", min);
+	//t_move m = calculate(a, b);
+	//printf("%d %d %d %d", m.ra, m.rb, m.rra, m.rrb, m.pb);
 	// while (!(b->head && b->num == get_min(b)))
 	// 	lstrotate(&b, 1);
-	calculate(*a, *b);
+	//calculate(*a, *b);
 	// while (lstsize(b))
 	// {
 	// 	min = 0;
@@ -110,5 +131,6 @@ int	main(int argc, char **argv)
 	lst = allocate_list(s);
 	free(s);
 	_index(lst);
+
 	fill_b(lst);
 }

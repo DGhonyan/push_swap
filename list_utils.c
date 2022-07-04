@@ -81,7 +81,7 @@ void	print_list(t_list *lst)
 	ft_printf("\n");
 	while (1)
 	{
-		ft_printf("%d %d %d\n", lst->num, lst->index, lst->move);
+		ft_printf("%d %d %d %d\n", lst->num, lst->index, lst->move, lst->spot);
 		lst = lst->next;
 		if (lst->head)
 			break ;
