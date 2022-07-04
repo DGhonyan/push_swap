@@ -48,9 +48,9 @@ void	lstrotate(t_list **lst, int b)
 			break ;
 		}
 	}
-	if (b)
+	if (b == 1)
 		ft_printf("rb\n");
-	else
+	else if (b == 0)
 		ft_printf("ra\n");
 	gonna_delete_later(*lst);
 }
@@ -67,9 +67,9 @@ void	rra(t_list **lst, int b)
 			break ;
 		}
 	}
-	if (b)
+	if (b == 1)
 		ft_printf("rrb\n");
-	else
+	else if (b == 0)
 		ft_printf("rra\n");
 	gonna_delete_later(*lst);
 }

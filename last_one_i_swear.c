@@ -31,7 +31,7 @@ int	choose_rotate(t_list *a, t_list *b)
 	return (where);
 }
 
-int	_max(t_list *a, t_list *b)
+int	_max(t_list *a)
 {
 	int	min;
 	int	i;

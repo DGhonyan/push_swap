@@ -49,39 +49,43 @@ void	sort_a(t_list *a, t_list *b)
 	void	(*rotate)(t_list **, int);
 
 	assign_min(a);
-	while (lstsize(b))
-	{
-		min = 0;
-		max = 0;
-		rotate = &rra;
-		if (choose_rotate(a, b) < lstsize(a) / 2)
-			rotate = &lstrotate;
-		while (!(b->num > a->num && b->num < a->next->num))
-		{
-			if (b->num < get_min(a) && (a->head && a->num == get_min(a)))
-			{
-				min = 1;
-				break ;
-			}
-			else if (b->num > get_max(a) && (a->head && a->num == get_min(a)))
-			{
-				max = 1;
-				break ;
-			}
-			rotate(&a,0);
-		}
-		push_b(b, &a, 1);
-		lstdel(&b);
-		if (max)
-			rra(&a, 0);
-		else if (!min && !max)
-			swap(&a);
-		// }
-	}
-	while (!is_sorted_break(a))
-	{
-		lstrotate(&a, 0);
-	}
+	assign_min(b);
+	// while (!(b->head && b->num == get_min(b)))
+	// 	lstrotate(&b, 1);
+	calculate(*a, *b);
+	// while (lstsize(b))
+	// {
+	// 	min = 0;
+	// 	max = 0;
+	// 	rotate = &rra;
+		// if (choose_rotate(a, b) < lstsize(a) / 2)
+	// 		rotate = &lstrotate;
+	// 	while (!(b->num > a->num && b->num < a->next->num))
+	// 	{
+	// 		if (b->num < get_min(a) && (a->head && a->num == get_min(a)))
+	// 		{
+	// 			min = 1;
+	// 			break ;
+	// 		}
+	// 		else if (b->num > get_max(a) && (a->head && a->num == get_min(a)))
+	// 		{
+	// 			max = 1;
+	// 			break ;
+	// 		}
+	// 		rotate(&a,0);
+	// 	}
+	// 	push_b(b, &a, 1);
+	// 	lstdel(&b);
+	// 	if (max)
+	// 		rra(&a, 0);
+	// 	else if (!min && !max)
+	// 		swap(&a);
+	// 	// }
+	// }
+	// while (!is_sorted_break(a))
+	// {
+	// 	lstrotate(&a, 0);
+	// }
 	// print_list(a);
 	free_list(a);
 }
