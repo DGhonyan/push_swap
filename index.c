@@ -56,6 +56,7 @@ void	assign_min(t_list *lst)
 int	get_min(t_list *lst)
 {
 	int		min;
+	int		num;
 	t_list	*tmp;
 
 	min = INT_MAX;

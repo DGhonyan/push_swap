@@ -4,12 +4,13 @@ t_list	*lstdup(t_list *lst);
 
 void	assign_moves(t_move *moves)
 {
-	moves->ra = 0;
-	moves->rra = 0;
-	//moves->rb = 0;
-	//moves->rrb = 0;
 	moves->pb = 0;
+	moves->ra = 0;
+	moves->rb = 0;
+	moves->rra = 0;
+	moves->rrb = 0;
 	moves->sa = 0;
+	moves->rra_end = 0;
 }
 
 void	spot(t_list *a, t_list *b)
@@ -25,18 +26,20 @@ void	spot(t_list *a, t_list *b)
 		a = a->next;
 		if (a->head)
 			break ;
+		i++;
 	}
 	i = 0;
 	while (1)
 	{
 		b->spot = i;
+		i++;
 		b = b->next;
 		if (b->head)
 			break ;
 	}
 }
 
-int	calculate(t_list *lst_a, t_list *lst_b)
+t_move	calculate(t_list *lst_a, t_list *lst_b, int size)
 {
 	int		*rev;
 	int		*rb;
@@ -46,18 +49,18 @@ int	calculate(t_list *lst_a, t_list *lst_b)
 	t_list *b;
 	t_move	moves;
 
-	rb = &(moves.rb);
 	a = lstdup(lst_a);
 	b = lstdup(lst_b);
 	rotate_b = &lstrotate;
 	assign_moves(&moves);
-	// while (i--)
-	// {
+	assign_min(a);
+	assign_min(b);
+	// print_list(a);
+	// print_list(b);
 	rotate_a = &rra;
 	rev = &(moves.rra);
 	if (b->num < get_min(a) || b->num > get_max(a))
 	{
-		//printf("%d\n", b->num);
 		if (_max(a) < lstsize(a) / 2)
 		{
 			rev = &(moves.ra);
@@ -67,10 +70,10 @@ int	calculate(t_list *lst_a, t_list *lst_b)
 		{
 			*rev += 1;
 			rotate_a(&a, 2);
+			// print_list(a);
 		}
-		moves.pb++;
 		if (b->num > get_max(a))
-			*rev += 1;
+			moves.rra_end = 1;
 	}
 	else
 	{
@@ -79,22 +82,21 @@ int	calculate(t_list *lst_a, t_list *lst_b)
 			rotate_a = &lstrotate;
 			rev = &(moves.ra);
 		}
-		while (!(b->num > a->num && b->num < a->next->num))
+		while (!(b->num > a->num && b->num < a->next->num && a->head))
 		{
 			rotate_a(&a, 2);
 			*rev += 1;
 		}
-		moves.pb++;
-		moves.sa++;
+		moves.sa = 1;
 	}
-	printf("\n%d %d %d %d %d\n", b->num, moves.ra, moves.rra, moves.sa, moves.pb);
-	int d = b->spot;
-	int c = lstsize(b);
+	moves.pb = 1;
+	if (b->spot > size / 2)
+		moves.rrb = size - b->spot;
+	else
+		moves.rb = b->spot;
 	free(a);
 	free(b);
-	if (d > c / 2)
-		return (moves.ra + moves.rra + moves.sa + moves.pb + c - d);
-	return (moves.ra + moves.rra + moves.sa + moves.pb + d);
+	return (moves);
 }
 
 t_list	*lstdup(t_list *lst)
@@ -107,7 +109,9 @@ t_list	*lstdup(t_list *lst)
 		return (NULL);
 	tmp = new;
 	tmp->head = 1;
+	new->spot = lst->spot;
 	lst = lst->next;
+	new->index = -1;
 	while (1)
 	{
 		if (lst->head)
@@ -115,8 +119,10 @@ t_list	*lstdup(t_list *lst)
 		new->next = lstnew(lst->num, -1, NULL);
 		if (!new->next)
 			return (NULL);
+		new->next->spot = lst->spot;
 		lst = lst->next;
 		new = new->next;
+		new->index = -1;
 	}
 	new->next = tmp;
 	return (tmp);

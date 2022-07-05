@@ -38,6 +38,7 @@ typedef struct s_move
 	int	rrb;
 	int	pb;
 	int	sa;
+	int	rra_end;
 }	t_move;
 
 typedef struct s_list {
@@ -86,8 +87,9 @@ void	swap(t_list **lst);
 void	pb(t_list **lst, t_list **b);
 void	print_list(t_list *lst);
 void	push_b(t_list *lst, t_list **stack_b, int lol);
-int		calculate(t_list *lst_a, t_list *lst_b);
 void	spot(t_list *a, t_list *b);
+int		move_count(t_move moves);
+t_move	calculate(t_list *lst_a, t_list *lst_b, int size);
 t_list	*lstlast(t_list *list);
 t_list	*allocate_list(char *s);
 t_list	*lstnew(int num, int index, t_list *prev);
