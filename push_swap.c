@@ -39,7 +39,7 @@ void	fill_b(t_list *lst)
 	while (!(lst->head && lst->num == aaaaaaah(lst).num))
 		rotate(&lst, 0);
 	mark_to_move(lst);
-	print_list(lst);
+	// print_list(lst);
 	while (have_to_move(lst))
 	{
 		is_sorted(lst, b);
@@ -55,8 +55,8 @@ void	fill_b(t_list *lst)
 			lstrotate(&lst, 0);
 	}
 	is_sorted(lst, b);
-	// print_list(lst);
-	// print_list(b);
+	print_list(lst);
+	print_list(b);
 	sort_a(lst, b);
 }
 
@@ -73,8 +73,6 @@ void	sort_a(t_list *a, t_list *b)
 	assign_min(a);
 	assign_min(b);
 	spot(a, b);
-	// print_list(a);
-
 	size = lstsize(b);
 	i = size;
 	// while (i--)
@@ -86,11 +84,8 @@ void	sort_a(t_list *a, t_list *b)
 	// }
 	while (lstsize(b))
 	{
-		spot(a, b);
 		min = INT_MAX;
-		// assign_moves(&min_moves);
 		i = lstsize(b);
-		// min_moves = calculate(a, b, size);
 		while (i)
 		{
 			moves = calculate(a, b, size);
@@ -105,10 +100,11 @@ void	sort_a(t_list *a, t_list *b)
 				break ;
 		}
 		assign_min(a);
-		do_the_thing(min_moves, &a, &b);
-		// print_list(a);
-		// print_list(b);
-		// lstdel(&b);
+		// do_the_thing(min_moves, &a, &b);
+		spot(a, b);
+		print_list(a);
+		print_list(b);
+		lstdel(&b);
 	}
 	// print_list(a);
 	// print_list(b);

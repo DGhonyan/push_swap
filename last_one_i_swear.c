@@ -19,6 +19,7 @@ int	choose_rotate(t_list *a, t_list *b)
 
 	where = -1;
 	i = 0;
+	printf(" HOLA BITCH %d", b->num);
 	while (1)
 	{
 		if (b->num > a->num && b->num < a->next->num)

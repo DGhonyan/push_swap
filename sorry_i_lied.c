@@ -52,7 +52,7 @@ t_move	calculate(t_list *lst_a, t_list *lst_b, int size)
 	t_list *a;
 	t_list *b;
 	t_move	moves;
-
+	char *k = "rra";
 	a = lstdup(lst_a);
 	b = lstdup(lst_b);
 	rotate_b = &lstrotate;
@@ -60,25 +60,30 @@ t_move	calculate(t_list *lst_a, t_list *lst_b, int size)
 	assign_min(a);
 	assign_min(b);
 	spot(a, b);
-	print_list(a);
-	print_list(b);
+	// print_list(a);
+	// print_list(b);
 	rotate_a = &rra;
 	rev = &(moves.rra);
 	if (b->num < get_min_not_weird(a) || b->num > get_max_not_weird(a))
 	{
 		if (_max(a) < lstsize(a) / 2)
 		{
+			k = "ra";
 			rev = &(moves.ra);
 			rotate_a = &lstrotate;
 		}
 		while (!(a->num == get_min_not_weird(a) && a->head))
 		{
+			ft_printf("%s\n", k);
 			*rev += 1;
 			rotate_a(&a, 2);
 			// print_list(a);
 		}
 		if (b->num > get_max_not_weird(a))
+		{
+			ft_printf("rra end");
 			moves.rra_end = 1;
+		}
 	}
 	else
 	{
