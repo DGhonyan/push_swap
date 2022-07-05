@@ -63,6 +63,8 @@ void	err_only_lst(char *msg, t_list *lst, t_list *lst_b);
 
 //Lists
 int		hello(t_list *lst);
+int		get_min_not_weird(t_list *a);
+int		get_max_not_weird(t_list *a);
 int		lstsize(t_list *lst);
 int		is_sorted_break(t_list *lst);
 int		is_sorted(t_list *lst, t_list *b);
@@ -89,6 +91,8 @@ void	print_list(t_list *lst);
 void	push_b(t_list *lst, t_list **stack_b, int lol);
 void	spot(t_list *a, t_list *b);
 int		move_count(t_move moves);
+void	do_the_thing(t_move moves, t_list **a, t_list **b);
+void	assign_moves(t_move *moves);
 t_move	calculate(t_list *lst_a, t_list *lst_b, int size);
 t_list	*lstlast(t_list *list);
 t_list	*allocate_list(char *s);

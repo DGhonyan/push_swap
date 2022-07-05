@@ -20,7 +20,8 @@ t_list	*lstnew(int num, int index, t_list *prev)
 	new = malloc(sizeof (*new));
 	if (!new)
 		return (NULL);
-	new->index = index;
+	new->index = -1;
+	new->spot = 0;
 	new->num = num;
 	new->move = 0;
 	new->head = 0;
