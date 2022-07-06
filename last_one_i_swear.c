@@ -38,9 +38,9 @@ int	_max(t_list *a)
 	int	i;
 	int	where;
 
-	where = -1;
+	where = 0;
 	i = 0;
-	min = get_min(a);
+	min = get_min_not_weird(a);
 	while (1)
 	{
 		if (a->num == min)

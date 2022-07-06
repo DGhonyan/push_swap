@@ -39,14 +39,14 @@ void	do_the_thing(t_move moves, t_list **a, t_list **b)
 	int	rr;
 	int	rotate;
 
-	// while (moves.ra > 0 && moves.rb > 0)
-	// {
-	// 	lstrotate(a, 2);
-	// 	lstrotate(b, 2);
-	// 	ft_printf("rr\n");
-	// 	moves.ra--;
-	// 	moves.rb--;
-	// }
+	while (moves.ra > 0 && moves.rb > 0)
+	{
+		lstrotate(a, 2);
+		lstrotate(b, 2);
+		ft_printf("rr\n");
+		moves.ra--;
+		moves.rb--;
+	}
 	while (moves.ra > 0)
 	{
 		lstrotate(a, 0);
@@ -57,14 +57,14 @@ void	do_the_thing(t_move moves, t_list **a, t_list **b)
 		lstrotate(b, 1);
 		moves.rb--;
 	}
-	// while (moves.rra > 0 && moves.rrb > 0)
-	// {
-	// 	rra(a, 2);
-	// 	rra(b, 2);
-	// 	ft_printf("rrr\n");
-	// 	moves.rra--;
-	// 	moves.rrb--;
-	// }
+	while (moves.rra > 0 && moves.rrb > 0)
+	{
+		rra(a, 2);
+		rra(b, 2);
+		ft_printf("rrr\n");
+		moves.rra--;
+		moves.rrb--;
+	}
 	while (moves.rra > 0)
 	{
 		rra(a, 0);

@@ -93,6 +93,7 @@ void	spot(t_list *a, t_list *b);
 int		move_count(t_move moves);
 void	do_the_thing(t_move moves, t_list **a, t_list **b);
 void	assign_moves(t_move *moves);
+void	print_moves(t_move moves);
 t_move	calculate(t_list *lst_a, t_list *lst_b, int size);
 t_list	*lstlast(t_list *list);
 t_list	*allocate_list(char *s);

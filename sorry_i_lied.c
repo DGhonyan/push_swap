@@ -48,55 +48,36 @@ t_move	calculate(t_list *lst_a, t_list *lst_b, int size)
 	int		*rev;
 	int		*rb;
 	void	(*rotate_a)(t_list **, int);
-	void	(*rotate_b)(t_list **, int);
 	t_list *a;
 	t_list *b;
 	t_move	moves;
-	char *k = "rra";
+
 	a = lstdup(lst_a);
 	b = lstdup(lst_b);
-	rotate_b = &lstrotate;
 	assign_moves(&moves);
-	assign_min(a);
-	assign_min(b);
-	spot(a, b);
 	// print_list(a);
 	// print_list(b);
 	rotate_a = &rra;
 	rev = &(moves.rra);
-	if (b->num < get_min_not_weird(a) || b->num > get_max_not_weird(a))
+	if (b->num > get_max_not_weird(a) || b->num < get_min_not_weird(a))
 	{
-		if (_max(a) < lstsize(a) / 2)
-		{
-			k = "ra";
-			rev = &(moves.ra);
-			rotate_a = &lstrotate;
-		}
-		while (!(a->num == get_min_not_weird(a) && a->head))
-		{
-			ft_printf("%s\n", k);
-			*rev += 1;
-			rotate_a(&a, 2);
-			// print_list(a);
-		}
+		if (_max(a) > lstsize(a) / 2)
+			moves.rra = lstsize(a) - _max(a);
+		else
+			moves.ra = _max(a);
 		if (b->num > get_max_not_weird(a))
-		{
-			ft_printf("rra end");
 			moves.rra_end = 1;
-		}
 	}
 	else
 	{
-		if (choose_rotate(a, b) < lstsize(a) / 2)
+		int i = 0;
+		while (!(b->num > a->num && b->num < a->next->num))
 		{
-			rotate_a = &lstrotate;
-			rev = &(moves.ra);
+			// print_list(a);
+			i++;
+			lstrotate(&a, 2);
 		}
-		while (!(b->num > a->num && b->num < a->next->num && a->head))
-		{
-			rotate_a(&a, 2);
-			*rev += 1;
-		}
+		moves.ra = i;
 		moves.sa = 1;
 	}
 	moves.pb = 1;
@@ -106,6 +87,8 @@ t_move	calculate(t_list *lst_a, t_list *lst_b, int size)
 		moves.rb = b->spot;
 	free(a);
 	free(b);
+	// printf("IN CALCULATE ");
+	// print_moves(moves);
 	return (moves);
 }
 
