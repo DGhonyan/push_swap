@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lstnew.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dghonyan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/27 19:28:49 by dghonyan          #+#    #+#             */
+/*   Updated: 2022/05/27 19:31:46 by dghonyan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	get_min_not_weird(t_list *a)
@@ -32,13 +44,8 @@ int	get_max_not_weird(t_list *a)
 	return (min);
 }
 
-
-void	do_the_thing(t_move moves, t_list **a, t_list **b)
+void	while_r(t_list **a, t_list **b, t_move moves)
 {
-	int	r;
-	int	rr;
-	int	rotate;
-
 	while (moves.ra > 0 && moves.rb > 0)
 	{
 		lstrotate(a, 2);
@@ -57,6 +64,10 @@ void	do_the_thing(t_move moves, t_list **a, t_list **b)
 		lstrotate(b, 1);
 		moves.rb--;
 	}
+}
+
+void	while_rr(t_list **a, t_list **b, t_move moves)
+{
 	while (moves.rra > 0 && moves.rrb > 0)
 	{
 		rra(a, 2);
@@ -75,6 +86,12 @@ void	do_the_thing(t_move moves, t_list **a, t_list **b)
 		rra(b, 1);
 		moves.rrb--;
 	}
+}
+
+void	do_the_thing(t_move moves, t_list **a, t_list **b)
+{
+	while_r(a, b, moves);
+	while_rr(a, b, moves);
 	if (moves.pb)
 	{
 		push_b(*b, a, 1);
@@ -86,5 +103,4 @@ void	do_the_thing(t_move moves, t_list **a, t_list **b)
 	}
 	if (moves.rra_end)
 		lstrotate(a, 0);
-	//printf("%d %d\n", r, rr);
 }

@@ -1,6 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lstnew.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dghonyan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/27 19:28:49 by dghonyan          #+#    #+#             */
+/*   Updated: 2022/05/27 19:31:46 by dghonyan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_list	*lstdup(t_list *lst);
+
+static void	norminette_again(t_list *a, t_list *b, t_move *moves)
+{
+	if (b->num > get_max_not_weird(a) || b->num < get_min_not_weird(a))
+	{
+		if (_max(a) > lstsize(a) / 2)
+			moves->rra = lstsize(a) - _max(a);
+		else
+			moves->ra = _max(a);
+		if (b->num > get_max_not_weird(a))
+			moves->rra_end = 1;
+	}
+	else
+	{
+		if (choose_rotate(a, b) > lstsize(a) / 2)
+			moves->rra = lstsize(a) - choose_rotate(a, b);
+		else
+			moves->ra = choose_rotate(a, b);
+		moves->sa = 1;
+	}
+}
 
 void	assign_moves(t_move *moves)
 {
@@ -18,68 +51,35 @@ void	spot(t_list *a, t_list *b)
 	int	i;
 
 	i = 0;
-	if (a)
+	while (a)
 	{
-		while (1)
-		{
-			a->spot = i;
-			a = a->next;
-			if (a->head)
-				break ;
-			i++;
-		}
+		a->spot = i;
+		a = a->next;
+		if (a->head)
+			break ;
+		i++;
 	}
 	i = 0;
-	if (b)
+	while (b)
 	{
-		while (1)
-		{
-			b->spot = i;
-			i++;
-			b = b->next;
-			if (b->head)
-				break ;
-		}
+		b->spot = i;
+		i++;
+		b = b->next;
+		if (b->head)
+			break ;
 	}
 }
 
 t_move	calculate(t_list *lst_a, t_list *lst_b, int size)
 {
-	int		*rev;
-	int		*rb;
-	void	(*rotate_a)(t_list **, int);
-	t_list *a;
-	t_list *b;
+	t_list	*a;
+	t_list	*b;
 	t_move	moves;
 
 	a = lstdup(lst_a);
 	b = lstdup(lst_b);
 	assign_moves(&moves);
-	// print_list(a);
-	// print_list(b);
-	rotate_a = &rra;
-	rev = &(moves.rra);
-	if (b->num > get_max_not_weird(a) || b->num < get_min_not_weird(a))
-	{
-		if (_max(a) > lstsize(a) / 2)
-			moves.rra = lstsize(a) - _max(a);
-		else
-			moves.ra = _max(a);
-		if (b->num > get_max_not_weird(a))
-			moves.rra_end = 1;
-	}
-	else
-	{
-		int i = 0;
-		while (!(b->num > a->num && b->num < a->next->num))
-		{
-			// print_list(a);
-			i++;
-			lstrotate(&a, 2);
-		}
-		moves.ra = i;
-		moves.sa = 1;
-	}
+	norminette_again(a, b, &moves);
 	moves.pb = 1;
 	if (b->spot > size / 2)
 		moves.rrb = size - b->spot;
@@ -87,8 +87,6 @@ t_move	calculate(t_list *lst_a, t_list *lst_b, int size)
 		moves.rb = b->spot;
 	free(a);
 	free(b);
-	// printf("IN CALCULATE ");
-	// print_moves(moves);
 	return (moves);
 }
 

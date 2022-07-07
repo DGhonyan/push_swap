@@ -63,6 +63,7 @@ void	err_only_lst(char *msg, t_list *lst, t_list *lst_b);
 
 //Lists
 int		hello(t_list *lst);
+int		move_count(t_move moves);
 int		get_min_not_weird(t_list *a);
 int		get_max_not_weird(t_list *a);
 int		lstsize(t_list *lst);

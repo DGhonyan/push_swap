@@ -12,18 +12,12 @@
 
 #include "push_swap.h"
 
-void	gonna_delete_later(t_list *lst)
-{
-	// print_list(lst);
-}
-
 void	list_swap(t_list **lst)
 {
 	swap(lst);
 	_index(*lst);
 	mark_to_move(*lst);
 	ft_printf("sa\n");
-	gonna_delete_later(*lst);
 }
 
 void	pb(t_list **lst, t_list **b)
@@ -32,7 +26,6 @@ void	pb(t_list **lst, t_list **b)
 	lstdel(lst);
 	_index(*lst);
 	ft_printf("pb\n");
-	gonna_delete_later(*b);
 }
 
 void	lstrotate(t_list **lst, int b)
@@ -52,7 +45,6 @@ void	lstrotate(t_list **lst, int b)
 		ft_printf("rb\n");
 	else if (b == 0)
 		ft_printf("ra\n");
-	gonna_delete_later(*lst);
 }
 
 void	rra(t_list **lst, int b)
@@ -71,7 +63,6 @@ void	rra(t_list **lst, int b)
 		ft_printf("rrb\n");
 	else if (b == 0)
 		ft_printf("rra\n");
-	gonna_delete_later(*lst);
 }
 
 void	lstrotate_check(t_list **lst)
