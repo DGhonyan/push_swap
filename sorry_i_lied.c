@@ -76,8 +76,16 @@ t_move	calculate(t_list *lst_a, t_list *lst_b, int size)
 	t_list	*b;
 	t_move	moves;
 
+	a = NULL;
+	b = NULL;
 	a = lstdup(lst_a);
 	b = lstdup(lst_b);
+	if (!a || !b)
+	{
+		free(a);
+		free(b);
+		err_only_lst("bye (malloc failed)", lst_a, lst_b);
+	}
 	assign_moves(&moves);
 	norminette_again(a, b, &moves);
 	moves.pb = 1;
@@ -107,13 +115,13 @@ t_list	*lstdup(t_list *lst)
 	{
 		if (lst->head)
 			break ;
-		new->next = lstnew(lst->num, -1, NULL);
+		new->next = lstnew(lst->num, lst->index, NULL);
 		if (!new->next)
 			return (NULL);
 		new->next->spot = lst->spot;
 		lst = lst->next;
 		new = new->next;
-		new->index = -1;
+		new->index = lst->index;
 	}
 	new->next = tmp;
 	return (tmp);

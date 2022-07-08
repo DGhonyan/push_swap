@@ -21,14 +21,13 @@ void	more_norm(t_list **lst, void (**rotate)(t_list **, int))
 		(*rotate)(lst, 0);
 }
 
-void	fill_b(t_list *lst, int size)
+void	fill_b(t_list *lst)
 {
 	t_list	*b;
 	void	(*rotate)(t_list **, int);
 
 	b = NULL;
 	rotate = &rra;
-	more_norm(&lst, &rotate);
 	mark_to_move(lst);
 	while (have_to_move(lst))
 	{
@@ -50,12 +49,10 @@ void	fill_b(t_list *lst, int size)
 
 void	help(t_move *min_moves, t_move moves, int *min)
 {
-	if (*min > move_count(moves))
-	{
-		*min = move_count(moves);
-		*min_moves = moves;
-	}
+	*min = move_count(moves);
+	*min_moves = moves;
 }
+
 
 void	sort_a(t_list *a, t_list *b)
 {
@@ -83,7 +80,11 @@ void	sort_a(t_list *a, t_list *b)
 	}
 	while (!is_sorted_break(a))
 		lstrotate(&a, 0);
-	free_list(a);
+}
+
+void	one_last_thing(t_list *a)
+{
+	
 }
 
 int	main(int argc, char **argv)
@@ -105,5 +106,8 @@ int	main(int argc, char **argv)
 	lst = allocate_list(s);
 	free(s);
 	_index(lst);
-	fill_b(lst, lstsize(lst));
+	if (lstsize(lst) >= 3 || lstsize(lst) <= 5)
+		one_last_thing(lst);
+	fill_b(lst);
+	free(lst);
 }

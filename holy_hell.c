@@ -98,9 +98,7 @@ void	do_the_thing(t_move moves, t_list **a, t_list **b)
 		lstdel(b);
 	}
 	if (moves.sa)
-	{
 		list_swap(a);
-	}
 	if (moves.rra_end)
 		lstrotate(a, 0);
 }
