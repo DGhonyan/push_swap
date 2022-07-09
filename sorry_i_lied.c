@@ -89,14 +89,15 @@ t_move	calculate(t_list *lst_a, t_list *lst_b, int size)
 	assign_moves(&moves);
 	norminette_again(a, b, &moves);
 	moves.pb = 1;
-	if (b->spot > size / 2)
-		moves.rrb = size - b->spot;
-	else
-		moves.rb = b->spot;
+	moves.rb = b->spot;
 	free(a);
 	free(b);
 	return (moves);
 }
+	// if (b->spot > size / 2)
+	// 	moves.rrb = size - b->spot;
+	// else
+	// 	moves.rb = b->spot;
 
 t_list	*lstdup(t_list *lst)
 {

@@ -24,10 +24,8 @@ void	more_norm(t_list **lst, void (**rotate)(t_list **, int))
 void	fill_b(t_list *lst)
 {
 	t_list	*b;
-	void	(*rotate)(t_list **, int);
 
 	b = NULL;
-	rotate = &rra;
 	mark_to_move(lst);
 	while (have_to_move(lst))
 	{
@@ -80,33 +78,34 @@ void	sort_a(t_list *a, t_list *b)
 		}
 		do_the_thing(min_moves, &a, &b);
 	}
-	eh(a, &rotate);
-	while (!is_sorted_break(a))
-		rotate(&a, 0);
+	eh(&a, &rotate);
+	free(a);
 }
 
 int	main(int argc, char **argv)
 {
 	char	*s;
 	t_list	*lst;
+	void	(*rotate)(t_list **, int);
 
 	s = NULL;
 	if (argc == 1)
 		return (0);
 	s = sewing_machine(argv);
 	if (!s)
-	{
-		ft_printf(RED "malloc failed, earth will\
-			be destroyed in a minute\n" RESET);
-		exit(EXIT_FAILURE);
-	}
+		err("malloc failed", NULL, NULL);
 	check_args(argc, s);
 	lst = allocate_list(s);
 	free(s);
 	_index(lst);
-	if (lstsize(lst) >= 3 || lstsize(lst) <= 5)
+	rotate = &lstrotate;
+	if (aaaaaaah(lst).index > lstsize(lst) / 2)
+		rotate = &rra;
+	while (lst->num != aaaaaaah(lst).num && lstsize(lst) <= 30)
+		rotate(&lst, 0);
+	is_sorted(lst, NULL);
+	if (lstsize(lst) >= 3 && lstsize(lst) <= 5)
 		one_last_thing(lst);
 	else
 		fill_b(lst);
-	//free(lst);
 }

@@ -18,11 +18,13 @@ int	move_count(t_move moves)
 		+ moves.rra + moves.rrb + moves.sa + moves.rra_end);
 }
 
-void	eh(t_list *a, void (**rotate)(t_list **, int))
+void	eh(t_list **a, void (**rotate)(t_list **, int))
 {
 	*rotate = &lstrotate;
-	if (_max(a) > lstsize(a) / 2)
+	if (_max(*a) > lstsize(*a) / 2)
 		*rotate = &rra;
+	while (!is_sorted_break(*a))
+		(*rotate)(a, 0);
 }
 
 void	one_last_thing(t_list *a)
@@ -34,13 +36,10 @@ void	one_last_thing(t_list *a)
 		pb(&a, &b);
 	if (a->num == get_max_not_weird(a))
 		lstrotate(&a, 0);
+	if (a->next->num > a->next->next->num)
+		rra(&a, 0);
 	if (a->num > a->next->num)
 		list_swap(&a);
-	if (a->next->num > a->next->next->num)
-	{
-		rra(&a, 0);
-		list_swap(&a);
-	}
 	is_sorted(a, b);
 	sort_a(a, b);
 }

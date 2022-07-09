@@ -58,14 +58,14 @@ void	mark_to_move(t_list *lst)
 
 	while (lst)
 	{
-		lst->next->move = false;
+		lst->move = 0;
 		lst = lst->next;
 		if (lst->head)
 			break ;
 	}
 	head = lst->index;
 	lst = lst->next;
-	while (lst)
+	while (1)
 	{
 		if (lst->index - head == 1)
 			head = lst->index;

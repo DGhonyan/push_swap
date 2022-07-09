@@ -87,7 +87,7 @@ t_what	aaaaaaah(t_list *list)
 			aaah.num = lst->num;
 			max = hello(lst);
 		}
-		lstrotate_check(&lst);
+		lstrotate(&lst, 2);
 		j++;
 	}
 	return (aaah);

@@ -15,7 +15,8 @@
 void	err(char *msg, char **arr, char *s)
 {
 	ft_printf(RED "%s\n" RESET, msg);
-	free_ptr_arr(arr);
+	if (arr)
+		free_ptr_arr(arr);
 	free(s);
 	exit (EXIT_FAILURE);
 }

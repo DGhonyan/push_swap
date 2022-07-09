@@ -64,18 +64,3 @@ void	rra(t_list **lst, int b)
 	else if (b == 0)
 		ft_printf("rra\n");
 }
-
-void	lstrotate_check(t_list **lst)
-{
-	while (*lst)
-	{
-		*lst = (*lst)->next;
-		if ((*lst)->head == true)
-		{
-			(*lst)->head = false;
-			(*lst) = (*lst)->next;
-			(*lst)->head = true;
-			break ;
-		}
-	}
-}
