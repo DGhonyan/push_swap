@@ -90,8 +90,8 @@ t_move	calculate(t_list *lst_a, t_list *lst_b, int size)
 	norminette_again(a, b, &moves);
 	moves.pb = 1;
 	moves.rb = b->spot;
-	free(a);
-	free(b);
+	free_list(a);
+	free_list(b);
 	return (moves);
 }
 	// if (b->spot > size / 2)

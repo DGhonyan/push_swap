@@ -117,5 +117,6 @@ static int	dupes(char **arg)
 		}
 		i++;
 	}
+	free(arr);
 	return (1);
 }

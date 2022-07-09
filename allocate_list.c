@@ -12,22 +12,7 @@
 
 #include "push_swap.h"
 
-static t_list	*alloc(char *s);
-
 t_list	*allocate_list(char *s)
-{
-	t_list	*list;
-
-	list = alloc(s);
-	if (!list)
-	{
-		ft_printf(RED "Can't allocate list" RESET);
-		exit (EXIT_FAILURE);
-	}
-	return (list);
-}
-
-static t_list	*alloc(char *s)
 {
 	int		i;
 	char	**nums;

@@ -79,7 +79,7 @@ void	sort_a(t_list *a, t_list *b)
 		do_the_thing(min_moves, &a, &b);
 	}
 	eh(&a, &rotate);
-	free(a);
+	free_list(a);
 }
 
 int	main(int argc, char **argv)
